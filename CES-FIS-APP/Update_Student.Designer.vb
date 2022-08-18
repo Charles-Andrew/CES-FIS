@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Main
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class Update_Student
     Inherits MaterialSkin.Controls.MaterialForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,15 +20,8 @@ Partial Class Main
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
-        Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
         Me.tb_age = New MaterialSkin.Controls.MaterialTextBox2()
         Me.btn_enroll = New MaterialSkin.Controls.MaterialButton()
@@ -68,55 +61,8 @@ Partial Class Main
         Me.tb_middle_name = New MaterialSkin.Controls.MaterialMultiLineTextBox()
         Me.lbl_student_name = New MaterialSkin.Controls.MaterialLabel()
         Me.tb_given_name = New MaterialSkin.Controls.MaterialMultiLineTextBox()
-        Me.tp3 = New System.Windows.Forms.TabPage()
-        Me.tp1 = New System.Windows.Forms.TabPage()
-        Me.btn_update_student_record = New MaterialSkin.Controls.MaterialButton()
-        Me.btn_delete = New MaterialSkin.Controls.MaterialButton()
-        Me.btn_search = New MaterialSkin.Controls.MaterialButton()
-        Me.tb_search = New MaterialSkin.Controls.MaterialTextBox2()
-        Me.gb_main = New System.Windows.Forms.GroupBox()
-        Me.dgv_main = New System.Windows.Forms.DataGridView()
-        Me.MTC_MAIN = New MaterialSkin.Controls.MaterialTabControl()
-        Me.tp4 = New System.Windows.Forms.TabPage()
-        Me.gb_funds = New System.Windows.Forms.GroupBox()
-        Me.chart_funds = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.btn_transaction_history = New MaterialSkin.Controls.MaterialButton()
-        Me.lbl_manage = New MaterialSkin.Controls.MaterialLabel()
-        Me.lbl_item = New MaterialSkin.Controls.MaterialLabel()
-        Me.btn_remove_item = New MaterialSkin.Controls.MaterialButton()
-        Me.btn_add_funds = New MaterialSkin.Controls.MaterialButton()
-        Me.btn_add_item = New MaterialSkin.Controls.MaterialButton()
-        Me.dgv_funds = New System.Windows.Forms.DataGridView()
-        Me.tp2.SuspendLayout()
         Me.gb_enroll.SuspendLayout()
-        Me.tp1.SuspendLayout()
-        Me.gb_main.SuspendLayout()
-        CType(Me.dgv_main, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MTC_MAIN.SuspendLayout()
-        Me.tp4.SuspendLayout()
-        Me.gb_funds.SuspendLayout()
-        CType(Me.chart_funds, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgv_funds, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'IL_TABS
-        '
-        Me.IL_TABS.ImageStream = CType(resources.GetObject("IL_TABS.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.IL_TABS.TransparentColor = System.Drawing.Color.Transparent
-        Me.IL_TABS.Images.SetKeyName(0, "home.png")
-        Me.IL_TABS.Images.SetKeyName(1, "user.png")
-        '
-        'tp2
-        '
-        Me.tp2.Controls.Add(Me.gb_enroll)
-        Me.tp2.ImageIndex = 1
-        Me.tp2.Location = New System.Drawing.Point(4, 23)
-        Me.tp2.Name = "tp2"
-        Me.tp2.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp2.Size = New System.Drawing.Size(986, 506)
-        Me.tp2.TabIndex = 2
-        Me.tp2.Text = "Enroll"
-        Me.tp2.UseVisualStyleBackColor = True
         '
         'gb_enroll
         '
@@ -160,10 +106,10 @@ Partial Class Main
         Me.gb_enroll.Controls.Add(Me.lbl_student_name)
         Me.gb_enroll.Controls.Add(Me.tb_given_name)
         Me.gb_enroll.Dock = System.Windows.Forms.DockStyle.Left
-        Me.gb_enroll.Location = New System.Drawing.Point(3, 3)
+        Me.gb_enroll.Location = New System.Drawing.Point(3, 64)
         Me.gb_enroll.Name = "gb_enroll"
-        Me.gb_enroll.Size = New System.Drawing.Size(931, 500)
-        Me.gb_enroll.TabIndex = 0
+        Me.gb_enroll.Size = New System.Drawing.Size(923, 518)
+        Me.gb_enroll.TabIndex = 1
         Me.gb_enroll.TabStop = False
         '
         'tb_age
@@ -201,14 +147,14 @@ Partial Class Main
         Me.btn_enroll.Depth = 0
         Me.btn_enroll.HighEmphasis = True
         Me.btn_enroll.Icon = Nothing
-        Me.btn_enroll.Location = New System.Drawing.Point(398, 455)
+        Me.btn_enroll.Location = New System.Drawing.Point(388, 459)
         Me.btn_enroll.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.btn_enroll.MouseState = MaterialSkin.MouseState.HOVER
         Me.btn_enroll.Name = "btn_enroll"
         Me.btn_enroll.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_enroll.Size = New System.Drawing.Size(76, 36)
+        Me.btn_enroll.Size = New System.Drawing.Size(137, 36)
         Me.btn_enroll.TabIndex = 38
-        Me.btn_enroll.Text = "Enroll"
+        Me.btn_enroll.Text = "Update Record"
         Me.btn_enroll.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
         Me.btn_enroll.UseAccentColor = False
         Me.btn_enroll.UseVisualStyleBackColor = True
@@ -584,7 +530,7 @@ Partial Class Main
         'cb_civil_status
         '
         Me.cb_civil_status.AutoResize = False
-        Me.cb_civil_status.BackColor = System.Drawing.Color.White
+        Me.cb_civil_status.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cb_civil_status.Depth = 0
         Me.cb_civil_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
         Me.cb_civil_status.DropDownHeight = 174
@@ -694,375 +640,31 @@ Partial Class Main
         Me.tb_given_name.TabIndex = 0
         Me.tb_given_name.Text = ""
         '
-        'tp3
-        '
-        Me.tp3.BackColor = System.Drawing.Color.White
-        Me.tp3.ImageKey = "user.png"
-        Me.tp3.Location = New System.Drawing.Point(4, 23)
-        Me.tp3.Name = "tp3"
-        Me.tp3.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp3.Size = New System.Drawing.Size(986, 506)
-        Me.tp3.TabIndex = 1
-        Me.tp3.Text = "Payment"
-        '
-        'tp1
-        '
-        Me.tp1.BackColor = System.Drawing.Color.White
-        Me.tp1.Controls.Add(Me.btn_update_student_record)
-        Me.tp1.Controls.Add(Me.btn_delete)
-        Me.tp1.Controls.Add(Me.btn_search)
-        Me.tp1.Controls.Add(Me.tb_search)
-        Me.tp1.Controls.Add(Me.gb_main)
-        Me.tp1.ImageKey = "home.png"
-        Me.tp1.Location = New System.Drawing.Point(4, 23)
-        Me.tp1.Name = "tp1"
-        Me.tp1.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp1.Size = New System.Drawing.Size(986, 506)
-        Me.tp1.TabIndex = 0
-        Me.tp1.Text = "Home"
-        '
-        'btn_update_student_record
-        '
-        Me.btn_update_student_record.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_update_student_record.BackColor = System.Drawing.Color.Red
-        Me.btn_update_student_record.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_update_student_record.Depth = 0
-        Me.btn_update_student_record.HighEmphasis = True
-        Me.btn_update_student_record.Icon = Nothing
-        Me.btn_update_student_record.Location = New System.Drawing.Point(87, 461)
-        Me.btn_update_student_record.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_update_student_record.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_update_student_record.Name = "btn_update_student_record"
-        Me.btn_update_student_record.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_update_student_record.Size = New System.Drawing.Size(77, 36)
-        Me.btn_update_student_record.TabIndex = 5
-        Me.btn_update_student_record.Text = "UPDATE"
-        Me.btn_update_student_record.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_update_student_record.UseAccentColor = False
-        Me.btn_update_student_record.UseVisualStyleBackColor = False
-        '
-        'btn_delete
-        '
-        Me.btn_delete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_delete.BackColor = System.Drawing.Color.Red
-        Me.btn_delete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_delete.Depth = 0
-        Me.btn_delete.HighEmphasis = True
-        Me.btn_delete.Icon = Nothing
-        Me.btn_delete.Location = New System.Drawing.Point(6, 461)
-        Me.btn_delete.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_delete.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_delete.Name = "btn_delete"
-        Me.btn_delete.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_delete.Size = New System.Drawing.Size(73, 36)
-        Me.btn_delete.TabIndex = 4
-        Me.btn_delete.Text = "DELETE"
-        Me.btn_delete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_delete.UseAccentColor = False
-        Me.btn_delete.UseVisualStyleBackColor = False
-        '
-        'btn_search
-        '
-        Me.btn_search.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_search.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_search.Depth = 0
-        Me.btn_search.HighEmphasis = True
-        Me.btn_search.Icon = Nothing
-        Me.btn_search.Location = New System.Drawing.Point(848, 461)
-        Me.btn_search.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_search.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_search.Name = "btn_search"
-        Me.btn_search.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_search.Size = New System.Drawing.Size(78, 36)
-        Me.btn_search.TabIndex = 3
-        Me.btn_search.Text = "Search"
-        Me.btn_search.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_search.UseAccentColor = False
-        Me.btn_search.UseVisualStyleBackColor = True
-        '
-        'tb_search
-        '
-        Me.tb_search.AnimateReadOnly = False
-        Me.tb_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.tb_search.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.tb_search.Depth = 0
-        Me.tb_search.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.tb_search.HideSelection = True
-        Me.tb_search.LeadingIcon = Nothing
-        Me.tb_search.Location = New System.Drawing.Point(591, 455)
-        Me.tb_search.MaxLength = 32767
-        Me.tb_search.MouseState = MaterialSkin.MouseState.OUT
-        Me.tb_search.Name = "tb_search"
-        Me.tb_search.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.tb_search.PrefixSuffixText = Nothing
-        Me.tb_search.ReadOnly = False
-        Me.tb_search.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tb_search.SelectedText = ""
-        Me.tb_search.SelectionLength = 0
-        Me.tb_search.SelectionStart = 0
-        Me.tb_search.ShortcutsEnabled = True
-        Me.tb_search.Size = New System.Drawing.Size(250, 48)
-        Me.tb_search.TabIndex = 2
-        Me.tb_search.TabStop = False
-        Me.tb_search.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.tb_search.TrailingIcon = Nothing
-        Me.tb_search.UseSystemPasswordChar = False
-        '
-        'gb_main
-        '
-        Me.gb_main.BackColor = System.Drawing.Color.White
-        Me.gb_main.Controls.Add(Me.dgv_main)
-        Me.gb_main.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.gb_main.Location = New System.Drawing.Point(6, 6)
-        Me.gb_main.Name = "gb_main"
-        Me.gb_main.Size = New System.Drawing.Size(920, 446)
-        Me.gb_main.TabIndex = 1
-        Me.gb_main.TabStop = False
-        '
-        'dgv_main
-        '
-        Me.dgv_main.AllowUserToAddRows = False
-        Me.dgv_main.AllowUserToResizeRows = False
-        Me.dgv_main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgv_main.BackgroundColor = System.Drawing.Color.DarkGray
-        Me.dgv_main.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.dgv_main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_main.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv_main.Location = New System.Drawing.Point(3, 16)
-        Me.dgv_main.MultiSelect = False
-        Me.dgv_main.Name = "dgv_main"
-        Me.dgv_main.ReadOnly = True
-        Me.dgv_main.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgv_main.Size = New System.Drawing.Size(914, 427)
-        Me.dgv_main.TabIndex = 0
-        '
-        'MTC_MAIN
-        '
-        Me.MTC_MAIN.Controls.Add(Me.tp1)
-        Me.MTC_MAIN.Controls.Add(Me.tp2)
-        Me.MTC_MAIN.Controls.Add(Me.tp3)
-        Me.MTC_MAIN.Controls.Add(Me.tp4)
-        Me.MTC_MAIN.Depth = 0
-        Me.MTC_MAIN.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MTC_MAIN.ImageList = Me.IL_TABS
-        Me.MTC_MAIN.Location = New System.Drawing.Point(3, 64)
-        Me.MTC_MAIN.MouseState = MaterialSkin.MouseState.HOVER
-        Me.MTC_MAIN.Multiline = True
-        Me.MTC_MAIN.Name = "MTC_MAIN"
-        Me.MTC_MAIN.SelectedIndex = 0
-        Me.MTC_MAIN.Size = New System.Drawing.Size(994, 533)
-        Me.MTC_MAIN.TabIndex = 0
-        '
-        'tp4
-        '
-        Me.tp4.BackColor = System.Drawing.Color.White
-        Me.tp4.Controls.Add(Me.gb_funds)
-        Me.tp4.ImageIndex = 1
-        Me.tp4.Location = New System.Drawing.Point(4, 23)
-        Me.tp4.Name = "tp4"
-        Me.tp4.Size = New System.Drawing.Size(986, 506)
-        Me.tp4.TabIndex = 3
-        Me.tp4.Text = "Funds"
-        '
-        'gb_funds
-        '
-        Me.gb_funds.Controls.Add(Me.chart_funds)
-        Me.gb_funds.Controls.Add(Me.btn_transaction_history)
-        Me.gb_funds.Controls.Add(Me.lbl_manage)
-        Me.gb_funds.Controls.Add(Me.lbl_item)
-        Me.gb_funds.Controls.Add(Me.btn_remove_item)
-        Me.gb_funds.Controls.Add(Me.btn_add_funds)
-        Me.gb_funds.Controls.Add(Me.btn_add_item)
-        Me.gb_funds.Controls.Add(Me.dgv_funds)
-        Me.gb_funds.Dock = System.Windows.Forms.DockStyle.Left
-        Me.gb_funds.Location = New System.Drawing.Point(0, 0)
-        Me.gb_funds.Name = "gb_funds"
-        Me.gb_funds.Size = New System.Drawing.Size(914, 506)
-        Me.gb_funds.TabIndex = 0
-        Me.gb_funds.TabStop = False
-        '
-        'chart_funds
-        '
-        ChartArea3.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend3)
-        Me.chart_funds.Location = New System.Drawing.Point(523, 19)
-        Me.chart_funds.Name = "chart_funds"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series3.Legend = "Legend1"
-        Series3.Name = "s1"
-        Me.chart_funds.Series.Add(Series3)
-        Me.chart_funds.Size = New System.Drawing.Size(385, 384)
-        Me.chart_funds.TabIndex = 8
-        Me.chart_funds.Text = "Funds"
-        '
-        'btn_transaction_history
-        '
-        Me.btn_transaction_history.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_transaction_history.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_transaction_history.Depth = 0
-        Me.btn_transaction_history.HighEmphasis = True
-        Me.btn_transaction_history.Icon = Nothing
-        Me.btn_transaction_history.Location = New System.Drawing.Point(331, 431)
-        Me.btn_transaction_history.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_transaction_history.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_transaction_history.Name = "btn_transaction_history"
-        Me.btn_transaction_history.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_transaction_history.Size = New System.Drawing.Size(186, 36)
-        Me.btn_transaction_history.TabIndex = 7
-        Me.btn_transaction_history.Text = "Transaction History"
-        Me.btn_transaction_history.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_transaction_history.UseAccentColor = False
-        Me.btn_transaction_history.UseVisualStyleBackColor = True
-        '
-        'lbl_manage
-        '
-        Me.lbl_manage.AutoSize = True
-        Me.lbl_manage.Depth = 0
-        Me.lbl_manage.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_manage.Location = New System.Drawing.Point(219, 406)
-        Me.lbl_manage.MouseState = MaterialSkin.MouseState.HOVER
-        Me.lbl_manage.Name = "lbl_manage"
-        Me.lbl_manage.Size = New System.Drawing.Size(63, 19)
-        Me.lbl_manage.TabIndex = 6
-        Me.lbl_manage.Text = "Manage:"
-        '
-        'lbl_item
-        '
-        Me.lbl_item.AutoSize = True
-        Me.lbl_item.Depth = 0
-        Me.lbl_item.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_item.Location = New System.Drawing.Point(6, 406)
-        Me.lbl_item.MouseState = MaterialSkin.MouseState.HOVER
-        Me.lbl_item.Name = "lbl_item"
-        Me.lbl_item.Size = New System.Drawing.Size(44, 19)
-        Me.lbl_item.TabIndex = 5
-        Me.lbl_item.Text = "Items:"
-        '
-        'btn_remove_item
-        '
-        Me.btn_remove_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_remove_item.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_remove_item.Depth = 0
-        Me.btn_remove_item.HighEmphasis = True
-        Me.btn_remove_item.Icon = Nothing
-        Me.btn_remove_item.Location = New System.Drawing.Point(80, 431)
-        Me.btn_remove_item.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_remove_item.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_remove_item.Name = "btn_remove_item"
-        Me.btn_remove_item.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_remove_item.Size = New System.Drawing.Size(80, 36)
-        Me.btn_remove_item.TabIndex = 4
-        Me.btn_remove_item.Text = "Remove"
-        Me.btn_remove_item.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_remove_item.UseAccentColor = False
-        Me.btn_remove_item.UseVisualStyleBackColor = True
-        '
-        'btn_add_funds
-        '
-        Me.btn_add_funds.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_add_funds.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_add_funds.Depth = 0
-        Me.btn_add_funds.HighEmphasis = True
-        Me.btn_add_funds.Icon = Nothing
-        Me.btn_add_funds.Location = New System.Drawing.Point(222, 431)
-        Me.btn_add_funds.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_add_funds.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_add_funds.Name = "btn_add_funds"
-        Me.btn_add_funds.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_add_funds.Size = New System.Drawing.Size(101, 36)
-        Me.btn_add_funds.TabIndex = 2
-        Me.btn_add_funds.Text = "Add Funds"
-        Me.btn_add_funds.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_add_funds.UseAccentColor = False
-        Me.btn_add_funds.UseVisualStyleBackColor = True
-        '
-        'btn_add_item
-        '
-        Me.btn_add_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_add_item.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_add_item.Depth = 0
-        Me.btn_add_item.HighEmphasis = True
-        Me.btn_add_item.Icon = Nothing
-        Me.btn_add_item.Location = New System.Drawing.Point(8, 431)
-        Me.btn_add_item.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_add_item.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_add_item.Name = "btn_add_item"
-        Me.btn_add_item.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_add_item.Size = New System.Drawing.Size(64, 36)
-        Me.btn_add_item.TabIndex = 1
-        Me.btn_add_item.Text = "Add"
-        Me.btn_add_item.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_add_item.UseAccentColor = False
-        Me.btn_add_item.UseVisualStyleBackColor = True
-        '
-        'dgv_funds
-        '
-        Me.dgv_funds.AllowUserToAddRows = False
-        Me.dgv_funds.AllowUserToDeleteRows = False
-        Me.dgv_funds.AllowUserToResizeRows = False
-        Me.dgv_funds.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgv_funds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_funds.Location = New System.Drawing.Point(9, 19)
-        Me.dgv_funds.Name = "dgv_funds"
-        Me.dgv_funds.ReadOnly = True
-        Me.dgv_funds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgv_funds.Size = New System.Drawing.Size(508, 384)
-        Me.dgv_funds.TabIndex = 0
-        '
-        'Main
+        'Update_Student
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1000, 600)
-        Me.Controls.Add(Me.MTC_MAIN)
-        Me.DrawerShowIconsWhenHidden = True
-        Me.DrawerTabControl = Me.MTC_MAIN
+        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.ClientSize = New System.Drawing.Size(928, 585)
+        Me.Controls.Add(Me.gb_enroll)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1000, 600)
-        Me.MinimumSize = New System.Drawing.Size(1000, 600)
-        Me.Name = "Main"
+        Me.Name = "Update_Student"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "CES - Financial Inventory System"
-        Me.tp2.ResumeLayout(False)
+        Me.Text = "Update Student Record"
         Me.gb_enroll.ResumeLayout(False)
         Me.gb_enroll.PerformLayout()
-        Me.tp1.ResumeLayout(False)
-        Me.tp1.PerformLayout()
-        Me.gb_main.ResumeLayout(False)
-        CType(Me.dgv_main, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MTC_MAIN.ResumeLayout(False)
-        Me.tp4.ResumeLayout(False)
-        Me.gb_funds.ResumeLayout(False)
-        Me.gb_funds.PerformLayout()
-        CType(Me.chart_funds, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgv_funds, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents IL_TABS As ImageList
-    Friend WithEvents tp2 As TabPage
-    Friend WithEvents tp3 As TabPage
-    Friend WithEvents tp1 As TabPage
-    Friend WithEvents MTC_MAIN As MaterialSkin.Controls.MaterialTabControl
-    Friend WithEvents tp4 As TabPage
-    Friend WithEvents gb_main As GroupBox
-    Friend WithEvents dgv_main As DataGridView
-    Friend WithEvents tb_search As MaterialSkin.Controls.MaterialTextBox2
-    Friend WithEvents btn_search As MaterialSkin.Controls.MaterialButton
-    Friend WithEvents btn_delete As MaterialSkin.Controls.MaterialButton
+
     Friend WithEvents gb_enroll As GroupBox
-    Friend WithEvents lbl_student_name As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents tb_given_name As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents cb_civil_status As MaterialSkin.Controls.MaterialComboBox
-    Friend WithEvents lbl_civil_status As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents lbl_family_name As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents tb_family_name As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents lbl_student_middle_name As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents tb_middle_name As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents tb_age As MaterialSkin.Controls.MaterialTextBox2
+    Friend WithEvents btn_enroll As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents tb_spouse_occupation As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents tb_employer As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents tb_occupation_address As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents tb_present_job As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents tb_occupation As MaterialSkin.Controls.MaterialMultiLineTextBox
     Friend WithEvents tb_edat_vocational As MaterialSkin.Controls.MaterialMultiLineTextBox
     Friend WithEvents tb_edat_college As MaterialSkin.Controls.MaterialMultiLineTextBox
     Friend WithEvents tb_edat_hs As MaterialSkin.Controls.MaterialMultiLineTextBox
@@ -1086,21 +688,12 @@ Partial Class Main
     Friend WithEvents lbl_age As MaterialSkin.Controls.MaterialLabel
     Friend WithEvents dtp_dob As DateTimePicker
     Friend WithEvents lbl_DOB As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents tb_spouse_occupation As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents tb_employer As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents tb_occupation_address As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents tb_present_job As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents tb_occupation As MaterialSkin.Controls.MaterialMultiLineTextBox
-    Friend WithEvents btn_enroll As MaterialSkin.Controls.MaterialButton
-    Friend WithEvents tb_age As MaterialSkin.Controls.MaterialTextBox2
-    Friend WithEvents gb_funds As GroupBox
-    Friend WithEvents lbl_manage As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents lbl_item As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents btn_remove_item As MaterialSkin.Controls.MaterialButton
-    Friend WithEvents btn_add_funds As MaterialSkin.Controls.MaterialButton
-    Friend WithEvents btn_add_item As MaterialSkin.Controls.MaterialButton
-    Friend WithEvents dgv_funds As DataGridView
-    Friend WithEvents btn_transaction_history As MaterialSkin.Controls.MaterialButton
-    Friend WithEvents chart_funds As DataVisualization.Charting.Chart
-    Friend WithEvents btn_update_student_record As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents cb_civil_status As MaterialSkin.Controls.MaterialComboBox
+    Friend WithEvents lbl_civil_status As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents lbl_family_name As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents tb_family_name As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents lbl_student_middle_name As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents tb_middle_name As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents lbl_student_name As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents tb_given_name As MaterialSkin.Controls.MaterialMultiLineTextBox
 End Class

@@ -24,13 +24,13 @@ Partial Class Login
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.login_card = New MaterialSkin.Controls.MaterialCard()
+        Me.tb_pass = New MaterialSkin.Controls.MaterialTextBox2()
+        Me.tb_user = New MaterialSkin.Controls.MaterialTextBox2()
         Me.btn_create_admin = New MaterialSkin.Controls.MaterialButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pb_user = New System.Windows.Forms.PictureBox()
         Me.pb_password = New System.Windows.Forms.PictureBox()
         Me.btn_login = New MaterialSkin.Controls.MaterialButton()
-        Me.tb_user = New MaterialSkin.Controls.MaterialTextBox2()
-        Me.tb_pass = New MaterialSkin.Controls.MaterialTextBox2()
         Me.login_card.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_user, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +56,62 @@ Partial Class Login
         Me.login_card.Padding = New System.Windows.Forms.Padding(14)
         Me.login_card.Size = New System.Drawing.Size(357, 363)
         Me.login_card.TabIndex = 1
+        '
+        'tb_pass
+        '
+        Me.tb_pass.AnimateReadOnly = False
+        Me.tb_pass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tb_pass.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.tb_pass.Depth = 0
+        Me.tb_pass.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.tb_pass.HideSelection = True
+        Me.tb_pass.LeadingIcon = Nothing
+        Me.tb_pass.Location = New System.Drawing.Point(68, 244)
+        Me.tb_pass.MaxLength = 32767
+        Me.tb_pass.MouseState = MaterialSkin.MouseState.OUT
+        Me.tb_pass.Name = "tb_pass"
+        Me.tb_pass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.tb_pass.PrefixSuffixText = Nothing
+        Me.tb_pass.ReadOnly = False
+        Me.tb_pass.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.tb_pass.SelectedText = ""
+        Me.tb_pass.SelectionLength = 0
+        Me.tb_pass.SelectionStart = 0
+        Me.tb_pass.ShortcutsEnabled = True
+        Me.tb_pass.Size = New System.Drawing.Size(269, 48)
+        Me.tb_pass.TabIndex = 11
+        Me.tb_pass.TabStop = False
+        Me.tb_pass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.tb_pass.TrailingIcon = Nothing
+        Me.tb_pass.UseSystemPasswordChar = False
+        '
+        'tb_user
+        '
+        Me.tb_user.AnimateReadOnly = False
+        Me.tb_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tb_user.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.tb_user.Depth = 0
+        Me.tb_user.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.tb_user.HideSelection = True
+        Me.tb_user.LeadingIcon = Nothing
+        Me.tb_user.Location = New System.Drawing.Point(68, 175)
+        Me.tb_user.MaxLength = 32767
+        Me.tb_user.MouseState = MaterialSkin.MouseState.OUT
+        Me.tb_user.Name = "tb_user"
+        Me.tb_user.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.tb_user.PrefixSuffixText = Nothing
+        Me.tb_user.ReadOnly = False
+        Me.tb_user.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.tb_user.SelectedText = ""
+        Me.tb_user.SelectionLength = 0
+        Me.tb_user.SelectionStart = 0
+        Me.tb_user.ShortcutsEnabled = True
+        Me.tb_user.Size = New System.Drawing.Size(269, 48)
+        Me.tb_user.TabIndex = 10
+        Me.tb_user.TabStop = False
+        Me.tb_user.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.tb_user.TrailingIcon = Nothing
+        Me.tb_user.UseSystemPasswordChar = False
         '
         'btn_create_admin
         '
@@ -123,62 +179,6 @@ Partial Class Login
         Me.btn_login.UseAccentColor = False
         Me.btn_login.UseVisualStyleBackColor = True
         '
-        'tb_user
-        '
-        Me.tb_user.AnimateReadOnly = False
-        Me.tb_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.tb_user.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.tb_user.Depth = 0
-        Me.tb_user.Font = New System.Drawing.Font("Roboto", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.tb_user.HideSelection = True
-        Me.tb_user.LeadingIcon = Nothing
-        Me.tb_user.Location = New System.Drawing.Point(68, 175)
-        Me.tb_user.MaxLength = 32767
-        Me.tb_user.MouseState = MaterialSkin.MouseState.OUT
-        Me.tb_user.Name = "tb_user"
-        Me.tb_user.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.tb_user.PrefixSuffixText = Nothing
-        Me.tb_user.ReadOnly = False
-        Me.tb_user.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tb_user.SelectedText = ""
-        Me.tb_user.SelectionLength = 0
-        Me.tb_user.SelectionStart = 0
-        Me.tb_user.ShortcutsEnabled = True
-        Me.tb_user.Size = New System.Drawing.Size(269, 48)
-        Me.tb_user.TabIndex = 10
-        Me.tb_user.TabStop = False
-        Me.tb_user.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.tb_user.TrailingIcon = Nothing
-        Me.tb_user.UseSystemPasswordChar = False
-        '
-        'tb_pass
-        '
-        Me.tb_pass.AnimateReadOnly = False
-        Me.tb_pass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.tb_pass.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.tb_pass.Depth = 0
-        Me.tb_pass.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.tb_pass.HideSelection = True
-        Me.tb_pass.LeadingIcon = Nothing
-        Me.tb_pass.Location = New System.Drawing.Point(68, 244)
-        Me.tb_pass.MaxLength = 32767
-        Me.tb_pass.MouseState = MaterialSkin.MouseState.OUT
-        Me.tb_pass.Name = "tb_pass"
-        Me.tb_pass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.tb_pass.PrefixSuffixText = Nothing
-        Me.tb_pass.ReadOnly = False
-        Me.tb_pass.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tb_pass.SelectedText = ""
-        Me.tb_pass.SelectionLength = 0
-        Me.tb_pass.SelectionStart = 0
-        Me.tb_pass.ShortcutsEnabled = True
-        Me.tb_pass.Size = New System.Drawing.Size(269, 48)
-        Me.tb_pass.TabIndex = 11
-        Me.tb_pass.TabStop = False
-        Me.tb_pass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.tb_pass.TrailingIcon = Nothing
-        Me.tb_pass.UseSystemPasswordChar = False
-        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -186,6 +186,7 @@ Partial Class Login
         Me.ClientSize = New System.Drawing.Size(389, 455)
         Me.Controls.Add(Me.login_card)
         Me.Name = "Login"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.login_card.ResumeLayout(False)
         Me.login_card.PerformLayout()

@@ -54,3 +54,5 @@ D:\CES-FIS\CES-FIS-APP\obj\Debug\CES-FIS-APP.exe
 D:\CES-FIS\CES-FIS-APP\obj\Debug\CES-FIS-APP.xml
 D:\CES-FIS\CES-FIS-APP\obj\Debug\CES-FIS-APP.pdb
 D:\CES-FIS\CES-FIS-APP\obj\Debug\CES_FIS_APP.Add_Items.resources
+D:\CES-FIS\CES-FIS-APP\obj\Debug\CES_FIS_APP.Transaction_History.resources
+D:\CES-FIS\CES-FIS-APP\obj\Debug\CES_FIS_APP.Update_Student.resources

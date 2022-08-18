@@ -1,4 +1,5 @@
-﻿Imports MaterialSkin
+﻿Imports System.Windows.Forms.DataVisualization.Charting
+Imports MaterialSkin
 Public Class Main
     Public is_admin As Boolean = False
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -19,7 +20,7 @@ Public Class Main
             MessageBox.Show("Some fields are missing or with incorrect values. Please recheck.")
         Else
 
-            Dim approve As DialogResult = MessageBox.Show("Are the data finalized?", "Confimation", MessageBoxButtons.YesNo)
+            Dim approve As DialogResult = MessageBox.Show("Are the data finalized?", "Confimation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If approve = DialogResult.Yes Then
                 Dim db As New DBConn
                 db.Open()
@@ -122,15 +123,50 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SELECT items.id as ""Item ID#"", items.name as ""Name of Item"", (SELECT sum(ft.added_amount) as ""Total Amount"" FROM items as i JOIN funds_transactions as ft ON ft.item_id = i.id WHERE i.id = items.id) FROM items"
+        cmd.CommandText = "SELECT items.id as ""Item ID#"", items.name as ""Name of Item"", (SELECT sum(ft.added_amount) as ""Amount"" FROM items as i JOIN funds_transactions as ft ON ft.item_id = i.id WHERE i.id = items.id) FROM items"
         Dim dt = db.dt
         Dim da = db.da
         dt.Clear()
         da.SelectCommand = cmd
         da.Fill(dt)
         dgv_funds.DataSource = dt
+
+
+        Dim dr = db.dr
+        dr = cmd.ExecuteReader
+
+        If dr.HasRows Then
+            chart_funds.Series.Clear()
+            chart_funds.Titles.Clear()
+            chart_funds.Titles.Add("Total Fund Amount: ₱" + TotalFundAmount()).Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+            chart_funds.Series.Add("s1").ChartType = SeriesChartType.Pie
+            chart_funds.Series("s1").IsValueShownAsLabel = True
+            chart_funds.Series("s1").BorderColor = Color.Black
+            While dr.Read
+                chart_funds.Series("s1").Points.AddXY(dr.Item("Name of Item"), dr.Item("Amount"))
+            End While
+        End If
         db.Close()
+        TotalFundAmount()
     End Sub
+
+    Private Function TotalFundAmount() As String
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        cmd.CommandText = "SELECT SUM(added_amount) as ""Total Amount"" FROM funds_transactions"
+        Dim dr = db.dr
+        dr = cmd.ExecuteReader
+        Dim amount As Double = 0
+        If dr.HasRows Then
+            While dr.Read
+                amount = dr.Item("Total Amount")
+            End While
+        End If
+        db.Close()
+        Return amount.ToString
+    End Function
 
     Private Sub btn_remove_item_Click(sender As Object, e As EventArgs) Handles btn_remove_item.Click
         Dim selected_id As Integer = dgv_funds.CurrentRow.Cells(0).Value
@@ -152,12 +188,12 @@ Public Class Main
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show(ex.Message)
+                    MessageBox.Show("This item is currently connected to some records in the transaction. If you wish to delete this, delete all of the transaction records that corresponds to this item and try again.", "Delete Constrains", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
                 db.Close()
             End If
         Else
-            MessageBox.Show("Selected item successfully deleted.", "Delete Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
+            MessageBox.Show("No records were selected.", "Delete Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -171,5 +207,23 @@ Public Class Main
         a.tb_name.ReadOnly = True
         a.ShowDialog()
         LoadFundsTable()
+    End Sub
+
+    Private Sub btn_transaction_history_Click(sender As Object, e As EventArgs) Handles btn_transaction_history.Click
+        Dim th As New Transaction_History
+        th.selected_id = dgv_funds.CurrentRow.Cells(0).Value
+        th.ShowDialog()
+        LoadFundsTable()
+    End Sub
+
+    Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
+
+    End Sub
+
+    Private Sub btn_update_student_record_Click(sender As Object, e As EventArgs) Handles btn_update_student_record.Click
+        Dim us As New Update_Student
+        us.selected_id = dgv_main.CurrentRow.Cells(0).Value
+        us.ShowDialog()
+        LoadAllRecord()
     End Sub
 End Class

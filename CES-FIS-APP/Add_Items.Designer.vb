@@ -111,7 +111,7 @@ Partial Class Add_Items
         Me.tb_item_amount.HideSelection = True
         Me.tb_item_amount.LeadingIcon = Nothing
         Me.tb_item_amount.Location = New System.Drawing.Point(99, 153)
-        Me.tb_item_amount.MaxLength = 32767
+        Me.tb_item_amount.MaxLength = 7
         Me.tb_item_amount.MouseState = MaterialSkin.MouseState.OUT
         Me.tb_item_amount.Name = "tb_item_amount"
         Me.tb_item_amount.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -162,6 +162,7 @@ Partial Class Add_Items
         Me.Controls.Add(Me.lbl_item_name)
         Me.MaximizeBox = False
         Me.Name = "Add_Items"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Add Items"
         Me.ResumeLayout(False)
         Me.PerformLayout()

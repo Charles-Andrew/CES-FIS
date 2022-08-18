@@ -139,6 +139,7 @@
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -167,6 +168,7 @@
     </Compile>
     <Compile Include="DBConn.vb" />
     <Compile Include="encrypt.vb" />
+    <Compile Include="Item_Transaction_History_Class.vb" />
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -196,6 +198,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Transaction_History.Designer.vb">
+      <DependentUpon>Transaction_History.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction_History.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Student.Designer.vb">
+      <DependentUpon>Update_Student.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Student.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Add_Items.resx">
@@ -212,6 +226,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction_History.resx">
+      <DependentUpon>Transaction_History.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Student.resx">
+      <DependentUpon>Update_Student.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
