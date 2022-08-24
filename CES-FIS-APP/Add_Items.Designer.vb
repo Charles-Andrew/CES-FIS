@@ -28,6 +28,8 @@ Partial Class Add_Items
         Me.btn_item_add = New MaterialSkin.Controls.MaterialButton()
         Me.tb_item_amount = New MaterialSkin.Controls.MaterialTextBox2()
         Me.btn_add_funds = New MaterialSkin.Controls.MaterialButton()
+        Me.lbl_date = New MaterialSkin.Controls.MaterialLabel()
+        Me.dtp_date = New System.Windows.Forms.DateTimePicker()
         Me.SuspendLayout()
         '
         'lbl_item_name
@@ -89,7 +91,7 @@ Partial Class Add_Items
         Me.btn_item_add.Depth = 0
         Me.btn_item_add.HighEmphasis = True
         Me.btn_item_add.Icon = Nothing
-        Me.btn_item_add.Location = New System.Drawing.Point(270, 210)
+        Me.btn_item_add.Location = New System.Drawing.Point(270, 265)
         Me.btn_item_add.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.btn_item_add.MouseState = MaterialSkin.MouseState.HOVER
         Me.btn_item_add.Name = "btn_item_add"
@@ -136,7 +138,7 @@ Partial Class Add_Items
         Me.btn_add_funds.Depth = 0
         Me.btn_add_funds.HighEmphasis = True
         Me.btn_add_funds.Icon = Nothing
-        Me.btn_add_funds.Location = New System.Drawing.Point(293, 210)
+        Me.btn_add_funds.Location = New System.Drawing.Point(293, 265)
         Me.btn_add_funds.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.btn_add_funds.MouseState = MaterialSkin.MouseState.HOVER
         Me.btn_add_funds.Name = "btn_add_funds"
@@ -149,11 +151,34 @@ Partial Class Add_Items
         Me.btn_add_funds.UseVisualStyleBackColor = True
         Me.btn_add_funds.Visible = False
         '
+        'lbl_date
+        '
+        Me.lbl_date.AutoSize = True
+        Me.lbl_date.Depth = 0
+        Me.lbl_date.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.lbl_date.Location = New System.Drawing.Point(17, 221)
+        Me.lbl_date.MouseState = MaterialSkin.MouseState.HOVER
+        Me.lbl_date.Name = "lbl_date"
+        Me.lbl_date.Size = New System.Drawing.Size(38, 19)
+        Me.lbl_date.TabIndex = 7
+        Me.lbl_date.Text = "Date:"
+        '
+        'dtp_date
+        '
+        Me.dtp_date.CalendarFont = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtp_date.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtp_date.Location = New System.Drawing.Point(99, 219)
+        Me.dtp_date.Name = "dtp_date"
+        Me.dtp_date.Size = New System.Drawing.Size(295, 25)
+        Me.dtp_date.TabIndex = 8
+        '
         'Add_Items
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(411, 259)
+        Me.ClientSize = New System.Drawing.Size(411, 310)
+        Me.Controls.Add(Me.dtp_date)
+        Me.Controls.Add(Me.lbl_date)
         Me.Controls.Add(Me.btn_add_funds)
         Me.Controls.Add(Me.tb_item_amount)
         Me.Controls.Add(Me.btn_item_add)
@@ -175,4 +200,6 @@ Partial Class Add_Items
     Friend WithEvents btn_item_add As MaterialSkin.Controls.MaterialButton
     Friend WithEvents tb_item_amount As MaterialSkin.Controls.MaterialTextBox2
     Friend WithEvents btn_add_funds As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents lbl_date As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents dtp_date As DateTimePicker
 End Class

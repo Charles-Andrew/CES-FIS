@@ -22,7 +22,7 @@ Partial Class Transaction_History
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgv_transaction_history = New System.Windows.Forms.DataGridView()
         Me.lbl_item_name = New MaterialSkin.Controls.MaterialLabel()
         Me.lbl_item = New MaterialSkin.Controls.MaterialLabel()
@@ -37,14 +37,14 @@ Partial Class Transaction_History
         Me.dgv_transaction_history.AllowUserToResizeRows = False
         Me.dgv_transaction_history.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_transaction_history.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_transaction_history.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_transaction_history.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgv_transaction_history.Location = New System.Drawing.Point(6, 108)
         Me.dgv_transaction_history.MultiSelect = False
         Me.dgv_transaction_history.Name = "dgv_transaction_history"
@@ -58,19 +58,19 @@ Partial Class Transaction_History
         Me.lbl_item_name.AutoSize = True
         Me.lbl_item_name.Depth = 0
         Me.lbl_item_name.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_item_name.Location = New System.Drawing.Point(7, 68)
+        Me.lbl_item_name.Location = New System.Drawing.Point(10, 78)
         Me.lbl_item_name.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_item_name.Name = "lbl_item_name"
-        Me.lbl_item_name.Size = New System.Drawing.Size(198, 19)
+        Me.lbl_item_name.Size = New System.Drawing.Size(42, 19)
         Me.lbl_item_name.TabIndex = 1
-        Me.lbl_item_name.Text = "Transaction History of Item:"
+        Me.lbl_item_name.Text = "ITEM:"
         '
         'lbl_item
         '
         Me.lbl_item.AutoSize = True
         Me.lbl_item.Depth = 0
         Me.lbl_item.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_item.Location = New System.Drawing.Point(211, 68)
+        Me.lbl_item.Location = New System.Drawing.Point(58, 78)
         Me.lbl_item.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_item.Name = "lbl_item"
         Me.lbl_item.Size = New System.Drawing.Size(74, 19)

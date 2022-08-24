@@ -41,7 +41,7 @@
                     _cmd.CommandText = "INSERT INTO funds_transactions (item_id, added_amount, transaction_date) VALUES (@ii, @aa, @td)"
                     _cmd.Parameters.AddWithValue("@ii", dr.Item("id"))
                     _cmd.Parameters.AddWithValue("@aa", Double.Parse(tb_item_amount.Text))
-                    _cmd.Parameters.AddWithValue("@td", DateTime.Now.Date)
+                    _cmd.Parameters.AddWithValue("@td", dtp_date.Value.Date)
                     If _cmd.ExecuteNonQuery Then
                         MessageBox.Show("Item added successfully.")
                         tb_name.Clear()
@@ -74,7 +74,7 @@
         cmd.CommandText = "INSERT INTO funds_transactions (item_id, added_amount, transaction_date) VALUES (@ii, @aa, @td)"
         cmd.Parameters.AddWithValue("@ii", selected_id)
         cmd.Parameters.AddWithValue("@aa", Double.Parse(tb_item_amount.Text))
-        cmd.Parameters.AddWithValue("@td", DateTime.Now.Date)
+        cmd.Parameters.AddWithValue("@td", dtp_date.Value.Date)
         If cmd.ExecuteNonQuery Then
             MessageBox.Show("New transaction recorded successfully.")
             Me.Close()

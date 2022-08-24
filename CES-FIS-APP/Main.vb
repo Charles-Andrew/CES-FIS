@@ -1,13 +1,21 @@
 ﻿Imports System.Windows.Forms.DataVisualization.Charting
 Imports MaterialSkin
+
 Public Class Main
     Public is_admin As Boolean = False
+    Private student_id_for_payment As Integer = 0
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
         SkinManager.AddFormToManage(Me)
         SkinManager.Theme = MaterialSkinManager.Themes.LIGHT
         SkinManager.ColorScheme = New ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)
+        If Not is_admin Then
+            MTC_MAIN.TabPages.RemoveAt(2)
+            MTC_MAIN.TabPages.RemoveAt(2)
+            MTC_MAIN.TabPages.RemoveAt(2)
+            MTC_MAIN.TabPages.RemoveAt(3)
 
+        End If
         Ageload()
         LoadAllRecord()
     End Sub
@@ -63,18 +71,31 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub LoadAllRecord()
+    Private Sub LoadAllRecord(Optional Q As String = "")
         Dim db As New DBConn
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SELECT id as ""ID#"", CONCAT(given_name,' ',middle_name,' ',family_name) as ""Name of Student"", age as ""Age"", ""DOB"" as ""Date of Birth"", course as ""Course"", contact_number as ""Mobile #"", civil_status as ""Civil Status"", home_address as ""Address"" FROM students ORDER BY id ASC"
+        cmd.CommandText = "SELECT id as ""ID#"", CONCAT(given_name,' ',middle_name,' ',family_name) as ""Name of Student"", age as ""Age"", ""DOB"" as ""Date of Birth"", course as ""Course"", contact_number as ""Mobile #"", civil_status as ""Civil Status"", home_address as ""Address"" FROM students WHERE LOWER(CONCAT(given_name,middle_name,family_name,home_address,course,contact_number)) LIKE LOWER('%" + Q + "%') ORDER BY id ASC"
         Dim da = db.da
         Dim dt = db.dt
         dt.Clear()
         da.SelectCommand = cmd
         da.Fill(dt)
         dgv_main.DataSource = dt
+    End Sub
+
+    Private Sub btn_search_Click(sender As Object, e As EventArgs) Handles btn_search.Click
+        LoadAllRecord(tb_search.Text)
+    End Sub
+    Private Sub dgv_main_DataSourceChanged(sender As Object, e As EventArgs) Handles dgv_main.DataSourceChanged
+        If dgv_main.Rows.Count <> 0 Then
+            btn_update_student_record.Enabled = True
+            btn_delete.Enabled = True
+        Else
+            btn_update_student_record.Enabled = False
+            btn_delete.Enabled = False
+        End If
     End Sub
 
     Private Sub Ageload()
@@ -114,7 +135,48 @@ Public Class Main
 
     Private Sub MTC_MAIN_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MTC_MAIN.SelectedIndexChanged
         If MTC_MAIN.SelectedTab.Text = "Funds" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             LoadFundsTable()
+        ElseIf MTC_MAIN.SelectedTab.Text = "Payment" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+            LoadPaymentStudentList()
+            PaymentDetailsDesign()
+            LoadPaymentsTable(student_id_for_payment)
+        ElseIf MTC_MAIN.SelectedTab.Text = "Expenses" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+            ResetDate()
+            LoadExpensesTable()
+            LoadExpenseCardDesign()
+        ElseIf MTC_MAIN.SelectedTab.Text = "Reports" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+            ReportsTabDesign()
+        ElseIf MTC_MAIN.SelectedTab.Text = "Students" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+        ElseIf MTC_MAIN.SelectedTab.Text = "Enroll" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+        ElseIf MTC_MAIN.SelectedTab.Text = "Accounts" Then
+            Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+            AccountsTabDesign()
+            Load_Current_Account_Records()
+        End If
+    End Sub
+    Private Sub MTC_MAIN_Selecting(sender As Object, e As TabControlCancelEventArgs) Handles MTC_MAIN.Selecting
+        If Me.MTC_MAIN.SelectedTab Is tp8 Then
+            Dim lc As DialogResult = MessageBox.Show("Are you sure you want to logout of the application?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If lc = DialogResult.Yes Then
+                Me.Close()
+            Else
+                e.Cancel = True
+            End If
+        End If
+    End Sub
+
+    Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Dim lc As DialogResult = MessageBox.Show("Are you sure you want to logout of the application?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If lc = DialogResult.Yes Then
+            Me.Close()
+        Else
+            e.Cancel = True
         End If
     End Sub
 
@@ -148,6 +210,40 @@ Public Class Main
         End If
         db.Close()
         TotalFundAmount()
+    End Sub
+
+
+    Private Sub PaymentDetailsDesign()
+        lbl_balance_total_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+        lbl_total_paid_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+        lbl_remaining_balance_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+        lbl_payments_made_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+        lbl_balance_total_value.ForeColor = Color.Blue
+        lbl_total_paid_value.ForeColor = Color.Green
+        lbl_remaining_balance_value.ForeColor = Color.Red
+        lbl_payments_made_value.ForeColor = Color.Chocolate
+
+    End Sub
+
+    Private Sub LoadPaymentStudentList()
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        cmd.CommandText = "SELECT id, CONCAT(family_name,' ',given_name,' ',middle_name,' - ',course) as ""Student Details"" FROM students ORDER BY family_name ASC"
+        Dim da = db.da
+        Dim dt = db.dt
+        dt.Clear()
+        da.SelectCommand = cmd
+        da.Fill(dt)
+        Dim drow = dt.NewRow
+        drow("id") = 0
+        drow("Student Details") = "ALL"
+        dt.Rows.InsertAt(drow, 0)
+        cb_student_list.DataSource = dt
+        cb_student_list.ValueMember = "id"
+        cb_student_list.DisplayMember = "Student Details"
+        db.Close()
     End Sub
 
     Private Function TotalFundAmount() As String
@@ -217,7 +313,26 @@ Public Class Main
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
-
+        Dim student_id_to_delete As Integer = dgv_main.CurrentRow.Cells(0).Value
+        Dim sdc As DialogResult = MessageBox.Show("Are you sure you want to delete this student record? Please take not the all the other records relating to this will also be deleted.", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If sdc = DialogResult.Yes Then
+            Dim db As New DBConn
+            db.Open()
+            Dim cmd = db.cmd
+            cmd.Connection = db.conn
+            cmd.CommandText = "DELETE FROM studens WHERE id = @ID"
+            cmd.Parameters.AddWithValue("@ID", student_id_to_delete)
+            Try
+                If cmd.ExecuteNonQuery Then
+                    MessageBox.Show("Student record has deleted.", "Success")
+                Else
+                    MessageBox.Show("Something went wrong.", "Failed")
+                End If
+            Catch ex As Exception
+                MessageBox.Show("This student record is currently connected to some records in the payment section. If you wish to delete this, delete all of the payment records that corresponds to this item and try again.", "Delete Constrains", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            db.Close()
+        End If
     End Sub
 
     Private Sub btn_update_student_record_Click(sender As Object, e As EventArgs) Handles btn_update_student_record.Click
@@ -225,5 +340,338 @@ Public Class Main
         us.selected_id = dgv_main.CurrentRow.Cells(0).Value
         us.ShowDialog()
         LoadAllRecord()
+    End Sub
+
+    Private Sub btn_select_Click(sender As Object, e As EventArgs) Handles btn_select.Click
+        student_id_for_payment = cb_student_list.SelectedValue
+        LoadPaymentsTable(student_id_for_payment)
+    End Sub
+    Private Sub LoadPaymentsTable(id As Integer)
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        If id <> 0 Then
+            cmd.CommandText = "SELECT id as ""Payment ID#"", amount as ""Amount Paid"", date as ""Payment Date"" FROM payments WHERE payor_id=@PID"
+            cmd.Parameters.AddWithValue("@PID", id)
+            btn_set_balance.Visible = True
+            card_remaining_balance.Visible = True
+            card_balance_total.Visible = True
+            btn_pay.Visible = True
+        Else
+            cmd.CommandText = "SELECT id as ""Payment ID#"",(SELECT CONCAT(family_name,' ',given_name,' ',middle_name) as ""NAME"" FROM students WHERE id=payments.payor_id), amount as ""Amount Paid"", date as ""Payment Date"" FROM payments"
+            btn_set_balance.Visible = False
+            card_remaining_balance.Visible = False
+            card_balance_total.Visible = False
+            btn_pay.Visible = False
+        End If
+        Dim da = db.da
+        Dim dt = db.dt
+        dt.Clear()
+        da.SelectCommand = cmd
+        da.Fill(dt)
+        dgv_payments.DataSource = dt
+        db.Close()
+
+        Dim pic As New Payment_Info_Class
+        pic.selected_id = id
+        If id <> 0 Then
+            For Each item As DataRow In pic.LoadAllInfo().Rows
+                lbl_balance_total_value.Text = "₱" + If(item("Total Payment") IsNot DBNull.Value, item("Total Payment"), 0).ToString
+                lbl_payments_made_value.Text = If(item("Number of Payment") IsNot DBNull.Value, item("Number of Payment"), 0).ToString
+                lbl_remaining_balance_value.Text = "₱" + If(item("Difference") IsNot DBNull.Value, item("Difference"), 0).ToString
+                lbl_total_paid_value.Text = "₱" + If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0).ToString
+            Next
+        Else
+            For Each item As DataRow In pic.LoadAllInfo().Rows
+                lbl_payments_made_value.Text = If(item("Number of Payment") IsNot DBNull.Value, item("Number of Payment"), 0).ToString
+                lbl_total_paid_value.Text = "₱" + If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0).ToString
+            Next
+        End If
+    End Sub
+
+    Private Sub btn_set_balance_Click(sender As Object, e As EventArgs) Handles btn_set_balance.Click
+        Dim sb As New Student_Balance
+        sb.selected_id = cb_student_list.SelectedValue
+        sb.ShowDialog()
+        LoadPaymentsTable(student_id_for_payment)
+    End Sub
+
+    Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
+        If student_id_for_payment <> 0 Then
+            Dim sb As New Student_Balance
+            sb.Text = "New Payment"
+            sb.lbl_student_balance.Text = "Payment Amount:"
+            sb.btn_pay_new.Visible = True
+            sb.btn_update_balance.Visible = False
+            sb.for_payment = True
+            sb.selected_id = cb_student_list.SelectedValue
+            sb.ShowDialog()
+            LoadPaymentsTable(student_id_for_payment)
+        Else
+            MessageBox.Show("You need to select a record first and press the select button to proceed.", "Error selection.")
+        End If
+    End Sub
+
+    Private Sub LoadExpensesTable()
+        Dim date_from As Date = dtp_expenses_date_filter_before.Value.Date
+        Dim date_to As Date = dtp_expenses_date_filter_after.Value.Date
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        Dim QS As String = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", amount as ""Amount"", date as ""Date"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "' ORDER BY id DESC"
+        cmd.CommandText = QS
+
+        Dim da = db.da
+        Dim dt = db.dt
+        dt.Clear()
+        da.SelectCommand = cmd
+        da.Fill(dt)
+        dgv_expenses.DataSource = dt
+        db.Close()
+        LoadTotalExpense()
+    End Sub
+
+    Private Sub LoadTotalExpense()
+        Dim date_from As Date = dtp_expenses_date_filter_before.Value.Date
+        Dim date_to As Date = dtp_expenses_date_filter_after.Value.Date
+
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount), 'FM9,999,999') as ""Total"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
+        Dim dr = db.dr
+        dr = cmd.ExecuteReader
+        If dr.HasRows Then
+            While dr.Read
+                lbl_expense_total_value.Text = "₱" + If(dr.Item("Total") IsNot DBNull.Value, dr.Item("Total"), 0).ToString
+            End While
+        End If
+        db.Close()
+    End Sub
+
+    Private Sub LoadExpenseCardDesign()
+        lbl_expense_total_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+        lbl_expense_total_value.ForeColor = Color.Green
+    End Sub
+
+    Private Sub btn_expenses_add_Click(sender As Object, e As EventArgs) Handles btn_expenses_add.Click
+        If tb_expenses_amount.Text <> "" AndAlso tb_expenses_desc.Text <> "" Then
+            Dim db As New DBConn
+            db.Open()
+            Dim cmd = db.cmd
+            cmd.Connection = db.conn
+            cmd.CommandText = "INSERT INTO expenses (description, amount, date) VALUES (@DESC, @AMOUNT, @DATE)"
+            cmd.Parameters.AddWithValue("@DESC", tb_expenses_desc.Text)
+            cmd.Parameters.AddWithValue("@AMOUNT", Double.Parse(tb_expenses_amount.Text))
+            cmd.Parameters.AddWithValue("@DATE", dtp_expenses_date.Value.Date)
+            If cmd.ExecuteNonQuery Then
+                MessageBox.Show("New expense record was saved.", "Success")
+                tb_expenses_amount.Clear()
+                tb_expenses_desc.Clear()
+                dtp_expenses_date.Value = DateTime.Now.Date
+                LoadExpensesTable()
+            Else
+                MessageBox.Show("Something went wrong.", "Failed")
+            End If
+            db.Close()
+        End If
+    End Sub
+
+    Private Sub tb_expenses_amount_TextChanged(sender As Object, e As EventArgs) Handles tb_expenses_amount.TextChanged
+        If IsNumeric(tb_expenses_amount.Text) Then
+            btn_expenses_add.Enabled = True
+        Else
+            btn_expenses_add.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btn_expenses_delete_Click(sender As Object, e As EventArgs) Handles btn_expenses_delete.Click
+        Dim exr As DialogResult = MessageBox.Show("Are you sure you want to delete this expense record? Please take not that this cannot be undone.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If exr = DialogResult.Yes Then
+            Dim db As New DBConn
+            db.Open()
+            Dim cmd = db.cmd
+            cmd.Connection = db.conn
+            cmd.CommandText = "DELETE FROM expenses WHERE id = @ID"
+            cmd.Parameters.AddWithValue("@ID", dgv_expenses.CurrentRow.Cells(0).Value)
+            If cmd.ExecuteNonQuery Then
+                MessageBox.Show("Selected record successfully deleted.")
+                Me.LoadExpensesTable()
+            Else
+                MessageBox.Show("Something went wrong. Please try again.")
+            End If
+            db.Close()
+        End If
+    End Sub
+
+    Private Sub dgv_expenses_DataSourceChanged(sender As Object, e As EventArgs) Handles dgv_expenses.DataSourceChanged
+        If dgv_expenses.Rows.Count <> 0 Then
+            btn_expenses_delete.Enabled = True
+        Else
+            btn_expenses_delete.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btn_expenses_reset_Click(sender As Object, e As EventArgs) Handles btn_expenses_reset.Click
+        ResetDate()
+    End Sub
+
+    Private Sub ResetDate()
+        dtp_expenses_date_filter_before.Value = dtp_expenses_date_filter_before.MinDate
+        dtp_expenses_date_filter_after.Value = DateTime.Now.Date
+    End Sub
+
+    Private Sub btn_expenses_date_filter_Click(sender As Object, e As EventArgs) Handles btn_expenses_date_filter.Click
+        LoadExpensesTable()
+    End Sub
+    Private Sub ReportsTabDesign()
+        lbl_reports_main.Font = New Drawing.Font("Comic Sans", 20, FontStyle.Bold)
+        lbl_reports_main.ForeColor = Color.Black
+    End Sub
+
+    Private Sub btn_generate_report_Click(sender As Object, e As EventArgs) Handles btn_generate_report.Click
+        If cb_reports.SelectedItem = "Funds" Then
+            Dim rc As New Report_Class
+            rc.From_Date = dtp_reports_from.Value.Date
+            rc.To_Date = dtp_reports_to.Value.Date
+            Dim rf As New Report_Form
+            Dim report As New CR_Funds
+            report.SetDataSource(rc.GenerateFunds)
+            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_from.Value.Date.ToShortDateString)
+            rf.CrystalReportViewer1.ReportSource = report
+            rf.ShowDialog()
+        Else
+            Dim rc As New Report_Class
+            rc.From_Date = dtp_reports_from.Value.Date
+            rc.To_Date = dtp_reports_to.Value.Date
+            Dim rf As New Report_Form
+            Dim report As New CR_Expenses
+            report.SetDataSource(rc.GenerateExpenses)
+            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_from.Value.Date.ToShortDateString)
+            rf.CrystalReportViewer1.ReportSource = report
+            rf.ShowDialog()
+        End If
+
+    End Sub
+
+    Private Sub btn_accounts_admin_update_Click(sender As Object, e As EventArgs) Handles btn_accounts_admin_update.Click
+        If tb_admin_current_password.Text = "" OrElse tb_admin_new_password.Text = "" OrElse tb_admin_username.Text = "" Then
+            MessageBox.Show("All fields must have a data. Please try again.")
+        Else
+            Dim ccaa As DialogResult = MessageBox.Show("Are you sure you want to edit the admin account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If ccaa = DialogResult.Yes Then
+                Dim uac As New Update_Account_Class
+                uac._Username = tb_admin_username.Text
+                Dim enp As New encrypt
+                enp.hashProp = tb_admin_new_password.Text
+                Dim enp2 As New encrypt
+                enp2.hashProp = tb_admin_current_password.Text
+                uac._Password = enp.hashProp
+                uac._Password2 = enp2.hashProp
+                uac._Raw_Password = tb_admin_new_password.Text
+
+                If uac.Confirm_Password Then
+                    uac.Update_Account("Admin")
+                    Load_Current_Account_Records()
+                Else
+                    MessageBox.Show("Failed to verify the current admin password. Please try again.", "Confimation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub Load_Current_Account_Records()
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        cmd.CommandText = "SELECT * FROM users"
+        Dim dr = db.dr
+        dr = cmd.ExecuteReader
+        If dr.HasRows Then
+            If Check_Existing_Director() Then
+                While dr.Read
+                    If Not dr.Item("is_admin") Then
+                        tb_director_username.Text = dr.Item("username")
+                    Else
+                        tb_admin_username.Text = dr.Item("username")
+                    End If
+                End While
+            Else
+                While dr.Read
+                    tb_admin_username.Text = dr.Item("username")
+                End While
+            End If
+            tb_admin_current_password.Clear()
+            tb_admin_new_password.Clear()
+            tb_director_current_password.Clear()
+            tb_director_new_password.Clear()
+        End If
+        db.Close()
+    End Sub
+
+    Private Function Check_Existing_Director() As Boolean
+        Dim uac As New Update_Account_Class
+        If uac.Check_Exists_Director Then
+            btn_director_update.Visible = True
+            lbl_director_current_password.Visible = True
+            tb_director_current_password.Visible = True
+            btn_set_director.Visible = False
+            Return True
+        Else
+            btn_director_update.Visible = False
+            lbl_director_current_password.Visible = False
+            tb_director_current_password.Visible = False
+            btn_set_director.Visible = True
+            Return False
+        End If
+    End Function
+
+    Private Sub btn_director_update_Click(sender As Object, e As EventArgs) Handles btn_director_update.Click
+        If tb_director_current_password.Text = "" OrElse tb_director_new_password.Text = "" OrElse tb_director_username.Text = "" Then
+            MessageBox.Show("All fields must have a data. Please try again.")
+        Else
+            Dim ccda As DialogResult = MessageBox.Show("Are you sure you want to edit the directors account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If ccda = DialogResult.Yes Then
+                Dim uac As New Update_Account_Class
+                uac._Username = tb_director_username.Text
+                Dim enp As New encrypt
+                enp.hashProp = tb_director_new_password.Text
+                Dim enp2 As New encrypt
+                enp2.hashProp = tb_director_current_password.Text
+                uac._Password = enp.hashProp
+                uac._Password2 = enp2.hashProp
+                uac._Raw_Password = tb_director_new_password.Text
+
+                If uac.Confirm_Password Then
+                    uac.Update_Account("Director")
+                    Load_Current_Account_Records()
+                Else
+                    MessageBox.Show("Failed to verify the current directors password. Please try again.", "Confimation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            End If
+
+        End If
+    End Sub
+
+    Private Sub btn_set_director_Click(sender As Object, e As EventArgs) Handles btn_set_director.Click
+        Dim uac As New Update_Account_Class
+        uac._Username = tb_director_username.Text
+        Dim enp As New encrypt
+        enp.hashProp = tb_director_new_password.Text
+        uac._Password = enp.hashProp
+        uac._Raw_Password = tb_director_new_password.Text
+        uac.Set_Director()
+        Load_Current_Account_Records()
+    End Sub
+
+    Private Sub AccountsTabDesign()
+        lbl_admin_main.Font = New Drawing.Font("Comic Sans", 20, FontStyle.Bold)
+        lbl_admin_main.ForeColor = Color.Black
+        lbl_director_main.Font = New Drawing.Font("Comic Sans", 20, FontStyle.Bold)
+        lbl_director_main.ForeColor = Color.Black
     End Sub
 End Class

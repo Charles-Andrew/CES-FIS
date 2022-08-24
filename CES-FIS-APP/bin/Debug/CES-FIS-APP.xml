@@ -37,5 +37,60 @@ CES-FIS-APP
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="T:CES_FIS_APP.DS_Expenses">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Expenses.ExpensesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Expenses.ExpensesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Expenses.ExpensesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses.FundsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses.Funds_SummaryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses.FundsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses.Funds_SummaryRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses.FundsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:CES_FIS_APP.DS_Funds_Expenses.Funds_SummaryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 </members>
 </doc>

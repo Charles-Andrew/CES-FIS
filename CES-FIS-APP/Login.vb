@@ -23,12 +23,12 @@ Public Class Login
         dr = cmd.ExecuteReader
 
         If dr.HasRows Then
+            l.Close()
             Return True
         Else
+            l.Close()
             Return False
         End If
-
-
     End Function
 
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
@@ -45,14 +45,15 @@ Public Class Login
         dr = cmd.ExecuteReader()
 
         If dr.HasRows Then
+            Me.Hide()
             Dim m As New Main
             While dr.Read()
-                If dr.GetValue(dr.GetOrdinal("is_admin")) Then
+                If dr.Item("is_admin") Then
                     m.is_admin = True
                 End If
             End While
-            m.Show()
-            Me.Close()
+            m.ShowDialog()
+            Me.Show()
         Else
             MessageBox.Show("Incorrect. Please try again.")
         End If
@@ -73,23 +74,23 @@ Public Class Login
             en.hashProp = tb_pass.Text
             cmd.Parameters.AddWithValue("@PW", en.hashProp)
 
-            Dim confirmation As DialogResult = MessageBox.Show("Admin will only be created once. Please make sure to save a copy of the credentials.", "Confirmation", MessageBoxButtons.OKCancel)
+            Dim confirmation As DialogResult = MessageBox.Show("Admin will only be created once.", "Confirmation", MessageBoxButtons.OKCancel)
             If confirmation = DialogResult.OK Then
                 If cmd.ExecuteNonQuery Then
+                    MessageBox.Show("Admin created successfully. A txt file containing the credentials was saved in your desktop. Please store it in a secure folder to avoid unauthorized access.", "Information")
+                    Dim uac As New Update_Account_Class
+                    uac._Raw_Password = tb_pass.Text
+                    uac._Username = tb_user.Text
+                    uac.Save_Creds("Admin_Initial")
                     btn_login.Visible = True
                     btn_create_admin.Visible = False
                     tb_user.Clear()
                     tb_pass.Clear()
-                    MessageBox.Show("Admin created successfully. Please login.")
                 Else
                     MessageBox.Show("Something went wrong while creating the admin account. Please try again.")
                 End If
             End If
             db.Close()
         End If
-    End Sub
-
-    Private Sub Login_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Me.Dispose()
     End Sub
 End Class

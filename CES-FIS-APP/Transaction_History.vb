@@ -20,4 +20,12 @@
         End If
         LoadItemTransaction()
     End Sub
+
+    Private Sub dgv_transaction_history_DataSourceChanged(sender As Object, e As EventArgs) Handles dgv_transaction_history.DataSourceChanged
+        If dgv_transaction_history.Rows.Count <> 0 Then
+            btn_delete.Enabled = True
+        Else
+            btn_delete.Enabled = False
+        End If
+    End Sub
 End Class
