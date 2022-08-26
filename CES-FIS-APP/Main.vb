@@ -4,6 +4,7 @@ Imports MaterialSkin
 Public Class Main
     Public is_admin As Boolean = False
     Private student_id_for_payment As Integer = 0
+    Private logout_tab As Boolean = False
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
         SkinManager.AddFormToManage(Me)
@@ -163,20 +164,22 @@ Public Class Main
     Private Sub MTC_MAIN_Selecting(sender As Object, e As TabControlCancelEventArgs) Handles MTC_MAIN.Selecting
         If Me.MTC_MAIN.SelectedTab Is tp8 Then
             Dim lc As DialogResult = MessageBox.Show("Are you sure you want to logout of the application?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If lc = DialogResult.Yes Then
-                Me.Close()
-            Else
+            If Not lc = DialogResult.Yes Then
                 e.Cancel = True
+                logout_tab = False
+            Else
+                logout_tab = True
+                Me.Close()
             End If
         End If
     End Sub
 
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Dim lc As DialogResult = MessageBox.Show("Are you sure you want to logout of the application?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If lc = DialogResult.Yes Then
-            Me.Close()
-        Else
-            e.Cancel = True
+        If Not logout_tab Then
+            Dim lc As DialogResult = MessageBox.Show("Are you sure you want to logout of the application?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If Not lc = DialogResult.Yes Then
+                e.Cancel = True
+            End If
         End If
     End Sub
 
@@ -540,7 +543,7 @@ Public Class Main
             Dim rf As New Report_Form
             Dim report As New CR_Funds
             report.SetDataSource(rc.GenerateFunds)
-            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_from.Value.Date.ToShortDateString)
+            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
             rf.CrystalReportViewer1.ReportSource = report
             rf.ShowDialog()
         Else
@@ -550,7 +553,7 @@ Public Class Main
             Dim rf As New Report_Form
             Dim report As New CR_Expenses
             report.SetDataSource(rc.GenerateExpenses)
-            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_from.Value.Date.ToShortDateString)
+            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
             rf.CrystalReportViewer1.ReportSource = report
             rf.ShowDialog()
         End If
