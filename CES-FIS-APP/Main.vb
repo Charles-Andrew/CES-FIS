@@ -15,7 +15,6 @@ Public Class Main
             MTC_MAIN.TabPages.RemoveAt(2)
             MTC_MAIN.TabPages.RemoveAt(2)
             MTC_MAIN.TabPages.RemoveAt(3)
-
         End If
         Ageload()
         LoadAllRecord()
@@ -153,6 +152,7 @@ Public Class Main
             ReportsTabDesign()
         ElseIf MTC_MAIN.SelectedTab.Text = "Students" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+            LoadAllRecord()
         ElseIf MTC_MAIN.SelectedTab.Text = "Enroll" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
         ElseIf MTC_MAIN.SelectedTab.Text = "Accounts" Then
@@ -260,7 +260,11 @@ Public Class Main
         Dim amount As Double = 0
         If dr.HasRows Then
             While dr.Read
-                amount = dr.Item("Total Amount")
+                Try
+                    amount = dr.Item("Total Amount")
+                Catch ex As Exception
+                    amount = 0
+                End Try
             End While
         End If
         db.Close()
@@ -367,6 +371,7 @@ Public Class Main
             card_remaining_balance.Visible = False
             card_balance_total.Visible = False
             btn_pay.Visible = False
+
         End If
         Dim da = db.da
         Dim dt = db.dt
@@ -384,6 +389,11 @@ Public Class Main
                 lbl_payments_made_value.Text = If(item("Number of Payment") IsNot DBNull.Value, item("Number of Payment"), 0).ToString
                 lbl_remaining_balance_value.Text = "₱" + If(item("Difference") IsNot DBNull.Value, item("Difference"), 0).ToString
                 lbl_total_paid_value.Text = "₱" + If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0).ToString
+                If dgv_payments.Rows.Count <> 0 Then
+                    btn_delete_payment_record.Visible = True
+                Else
+                    btn_delete_payment_record.Visible = False
+                End If
             Next
         Else
             For Each item As DataRow In pic.LoadAllInfo().Rows
@@ -413,6 +423,23 @@ Public Class Main
             LoadPaymentsTable(student_id_for_payment)
         Else
             MessageBox.Show("You need to select a record first and press the select button to proceed.", "Error selection.")
+        End If
+    End Sub
+
+    Private Sub btn_delete_payment_record_Click(sender As Object, e As EventArgs) Handles btn_delete_payment_record.Click
+        Dim paydel As DialogResult = MessageBox.Show("Are you sure you want to delete this payment record? Please take not that this cannot be undone.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If paydel = DialogResult.Yes Then
+            Dim db As New DBConn
+            Dim cmd = db.cmd
+            db.Open()
+            cmd.Connection = db.conn
+            cmd.CommandText = "DELETE FROM payments WHERE id = @ID"
+            cmd.Parameters.AddWithValue("@ID", dgv_payments.CurrentRow.Cells(0).Value)
+            If cmd.ExecuteNonQuery Then
+                MessageBox.Show("Payment record successfully deleted.")
+                LoadPaymentsTable(student_id_for_payment)
+            End If
+            db.Close()
         End If
     End Sub
 
@@ -677,4 +704,6 @@ Public Class Main
         lbl_director_main.Font = New Drawing.Font("Comic Sans", 20, FontStyle.Bold)
         lbl_director_main.ForeColor = Color.Black
     End Sub
+
+
 End Class
