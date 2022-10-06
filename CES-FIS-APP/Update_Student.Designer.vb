@@ -61,12 +61,16 @@ Partial Class Update_Student
         Me.tb_middle_name = New MaterialSkin.Controls.MaterialMultiLineTextBox()
         Me.lbl_student_name = New MaterialSkin.Controls.MaterialLabel()
         Me.tb_given_name = New MaterialSkin.Controls.MaterialMultiLineTextBox()
+        Me.cb_aye = New MaterialSkin.Controls.MaterialComboBox()
+        Me.lbl_aye = New MaterialSkin.Controls.MaterialLabel()
         Me.gb_enroll.SuspendLayout()
         Me.SuspendLayout()
         '
         'gb_enroll
         '
         Me.gb_enroll.BackColor = System.Drawing.Color.White
+        Me.gb_enroll.Controls.Add(Me.cb_aye)
+        Me.gb_enroll.Controls.Add(Me.lbl_aye)
         Me.gb_enroll.Controls.Add(Me.tb_age)
         Me.gb_enroll.Controls.Add(Me.btn_enroll)
         Me.gb_enroll.Controls.Add(Me.tb_spouse_occupation)
@@ -166,7 +170,7 @@ Partial Class Update_Student
         Me.tb_spouse_occupation.Depth = 0
         Me.tb_spouse_occupation.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_spouse_occupation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_spouse_occupation.Location = New System.Drawing.Point(559, 386)
+        Me.tb_spouse_occupation.Location = New System.Drawing.Point(559, 413)
         Me.tb_spouse_occupation.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_spouse_occupation.Name = "tb_spouse_occupation"
         Me.tb_spouse_occupation.Size = New System.Drawing.Size(351, 29)
@@ -180,7 +184,7 @@ Partial Class Update_Student
         Me.tb_employer.Depth = 0
         Me.tb_employer.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_employer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_employer.Location = New System.Drawing.Point(559, 351)
+        Me.tb_employer.Location = New System.Drawing.Point(559, 378)
         Me.tb_employer.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_employer.Name = "tb_employer"
         Me.tb_employer.Size = New System.Drawing.Size(351, 29)
@@ -194,7 +198,7 @@ Partial Class Update_Student
         Me.tb_occupation_address.Depth = 0
         Me.tb_occupation_address.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_occupation_address.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_occupation_address.Location = New System.Drawing.Point(559, 316)
+        Me.tb_occupation_address.Location = New System.Drawing.Point(559, 343)
         Me.tb_occupation_address.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_occupation_address.Name = "tb_occupation_address"
         Me.tb_occupation_address.Size = New System.Drawing.Size(351, 29)
@@ -208,7 +212,7 @@ Partial Class Update_Student
         Me.tb_present_job.Depth = 0
         Me.tb_present_job.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_present_job.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_present_job.Location = New System.Drawing.Point(559, 281)
+        Me.tb_present_job.Location = New System.Drawing.Point(559, 308)
         Me.tb_present_job.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_present_job.Name = "tb_present_job"
         Me.tb_present_job.Size = New System.Drawing.Size(351, 29)
@@ -222,7 +226,7 @@ Partial Class Update_Student
         Me.tb_occupation.Depth = 0
         Me.tb_occupation.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_occupation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_occupation.Location = New System.Drawing.Point(559, 246)
+        Me.tb_occupation.Location = New System.Drawing.Point(559, 273)
         Me.tb_occupation.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_occupation.Name = "tb_occupation"
         Me.tb_occupation.Size = New System.Drawing.Size(351, 29)
@@ -236,7 +240,7 @@ Partial Class Update_Student
         Me.tb_edat_vocational.Depth = 0
         Me.tb_edat_vocational.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_vocational.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_vocational.Location = New System.Drawing.Point(585, 189)
+        Me.tb_edat_vocational.Location = New System.Drawing.Point(585, 233)
         Me.tb_edat_vocational.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_vocational.Name = "tb_edat_vocational"
         Me.tb_edat_vocational.Size = New System.Drawing.Size(325, 29)
@@ -250,7 +254,7 @@ Partial Class Update_Student
         Me.tb_edat_college.Depth = 0
         Me.tb_edat_college.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_college.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_college.Location = New System.Drawing.Point(585, 154)
+        Me.tb_edat_college.Location = New System.Drawing.Point(585, 198)
         Me.tb_edat_college.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_college.Name = "tb_edat_college"
         Me.tb_edat_college.Size = New System.Drawing.Size(325, 29)
@@ -264,7 +268,7 @@ Partial Class Update_Student
         Me.tb_edat_hs.Depth = 0
         Me.tb_edat_hs.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_hs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_hs.Location = New System.Drawing.Point(585, 119)
+        Me.tb_edat_hs.Location = New System.Drawing.Point(585, 163)
         Me.tb_edat_hs.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_hs.Name = "tb_edat_hs"
         Me.tb_edat_hs.Size = New System.Drawing.Size(325, 29)
@@ -278,7 +282,7 @@ Partial Class Update_Student
         Me.tb_edat_elem.Depth = 0
         Me.tb_edat_elem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_elem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_elem.Location = New System.Drawing.Point(585, 84)
+        Me.tb_edat_elem.Location = New System.Drawing.Point(585, 128)
         Me.tb_edat_elem.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_elem.Name = "tb_edat_elem"
         Me.tb_edat_elem.Size = New System.Drawing.Size(325, 29)
@@ -290,7 +294,7 @@ Partial Class Update_Student
         Me.lbl_so.AutoSize = True
         Me.lbl_so.Depth = 0
         Me.lbl_so.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_so.Location = New System.Drawing.Point(385, 386)
+        Me.lbl_so.Location = New System.Drawing.Point(385, 413)
         Me.lbl_so.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_so.Name = "lbl_so"
         Me.lbl_so.Size = New System.Drawing.Size(143, 19)
@@ -302,7 +306,7 @@ Partial Class Update_Student
         Me.lbl_employer.AutoSize = True
         Me.lbl_employer.Depth = 0
         Me.lbl_employer.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_employer.Location = New System.Drawing.Point(385, 351)
+        Me.lbl_employer.Location = New System.Drawing.Point(385, 378)
         Me.lbl_employer.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_employer.Name = "lbl_employer"
         Me.lbl_employer.Size = New System.Drawing.Size(71, 19)
@@ -314,7 +318,7 @@ Partial Class Update_Student
         Me.lbl_oa.AutoSize = True
         Me.lbl_oa.Depth = 0
         Me.lbl_oa.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_oa.Location = New System.Drawing.Point(385, 316)
+        Me.lbl_oa.Location = New System.Drawing.Point(385, 343)
         Me.lbl_oa.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_oa.Name = "lbl_oa"
         Me.lbl_oa.Size = New System.Drawing.Size(147, 19)
@@ -326,7 +330,7 @@ Partial Class Update_Student
         Me.lbl_first_job.AutoSize = True
         Me.lbl_first_job.Depth = 0
         Me.lbl_first_job.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_first_job.Location = New System.Drawing.Point(385, 281)
+        Me.lbl_first_job.Location = New System.Drawing.Point(385, 308)
         Me.lbl_first_job.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_first_job.Name = "lbl_first_job"
         Me.lbl_first_job.Size = New System.Drawing.Size(89, 19)
@@ -338,7 +342,7 @@ Partial Class Update_Student
         Me.lbl_occupation.AutoSize = True
         Me.lbl_occupation.Depth = 0
         Me.lbl_occupation.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_occupation.Location = New System.Drawing.Point(385, 246)
+        Me.lbl_occupation.Location = New System.Drawing.Point(385, 273)
         Me.lbl_occupation.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_occupation.Name = "lbl_occupation"
         Me.lbl_occupation.Size = New System.Drawing.Size(86, 19)
@@ -350,7 +354,7 @@ Partial Class Update_Student
         Me.lbl_eav.AutoSize = True
         Me.lbl_eav.Depth = 0
         Me.lbl_eav.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eav.Location = New System.Drawing.Point(415, 184)
+        Me.lbl_eav.Location = New System.Drawing.Point(415, 228)
         Me.lbl_eav.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eav.Name = "lbl_eav"
         Me.lbl_eav.Size = New System.Drawing.Size(81, 19)
@@ -362,7 +366,7 @@ Partial Class Update_Student
         Me.lbl_eac.AutoSize = True
         Me.lbl_eac.Depth = 0
         Me.lbl_eac.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eac.Location = New System.Drawing.Point(415, 152)
+        Me.lbl_eac.Location = New System.Drawing.Point(415, 196)
         Me.lbl_eac.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eac.Name = "lbl_eac"
         Me.lbl_eac.Size = New System.Drawing.Size(57, 19)
@@ -374,7 +378,7 @@ Partial Class Update_Student
         Me.lbl_eah.AutoSize = True
         Me.lbl_eah.Depth = 0
         Me.lbl_eah.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eah.Location = New System.Drawing.Point(415, 122)
+        Me.lbl_eah.Location = New System.Drawing.Point(415, 166)
         Me.lbl_eah.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eah.Name = "lbl_eah"
         Me.lbl_eah.Size = New System.Drawing.Size(91, 19)
@@ -386,7 +390,7 @@ Partial Class Update_Student
         Me.lbl_eae.AutoSize = True
         Me.lbl_eae.Depth = 0
         Me.lbl_eae.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eae.Location = New System.Drawing.Point(415, 86)
+        Me.lbl_eae.Location = New System.Drawing.Point(415, 130)
         Me.lbl_eae.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eae.Name = "lbl_eae"
         Me.lbl_eae.Size = New System.Drawing.Size(84, 19)
@@ -398,7 +402,7 @@ Partial Class Update_Student
         Me.lbl_ea.AutoSize = True
         Me.lbl_ea.Depth = 0
         Me.lbl_ea.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_ea.Location = New System.Drawing.Point(385, 52)
+        Me.lbl_ea.Location = New System.Drawing.Point(385, 110)
         Me.lbl_ea.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_ea.Name = "lbl_ea"
         Me.lbl_ea.Size = New System.Drawing.Size(171, 19)
@@ -640,6 +644,40 @@ Partial Class Update_Student
         Me.tb_given_name.TabIndex = 0
         Me.tb_given_name.Text = ""
         '
+        'cb_aye
+        '
+        Me.cb_aye.AutoResize = False
+        Me.cb_aye.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cb_aye.Depth = 0
+        Me.cb_aye.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
+        Me.cb_aye.DropDownHeight = 174
+        Me.cb_aye.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_aye.DropDownWidth = 121
+        Me.cb_aye.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
+        Me.cb_aye.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.cb_aye.FormattingEnabled = True
+        Me.cb_aye.IntegralHeight = False
+        Me.cb_aye.ItemHeight = 43
+        Me.cb_aye.Location = New System.Drawing.Point(585, 51)
+        Me.cb_aye.MaxDropDownItems = 4
+        Me.cb_aye.MouseState = MaterialSkin.MouseState.OUT
+        Me.cb_aye.Name = "cb_aye"
+        Me.cb_aye.Size = New System.Drawing.Size(121, 49)
+        Me.cb_aye.StartIndex = 0
+        Me.cb_aye.TabIndex = 43
+        '
+        'lbl_aye
+        '
+        Me.lbl_aye.AutoSize = True
+        Me.lbl_aye.Depth = 0
+        Me.lbl_aye.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.lbl_aye.Location = New System.Drawing.Point(385, 54)
+        Me.lbl_aye.MouseState = MaterialSkin.MouseState.HOVER
+        Me.lbl_aye.Name = "lbl_aye"
+        Me.lbl_aye.Size = New System.Drawing.Size(172, 19)
+        Me.lbl_aye.TabIndex = 42
+        Me.lbl_aye.Text = "Academic Year Enrolled:"
+        '
         'Update_Student
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -696,4 +734,6 @@ Partial Class Update_Student
     Friend WithEvents tb_middle_name As MaterialSkin.Controls.MaterialMultiLineTextBox
     Friend WithEvents lbl_student_name As MaterialSkin.Controls.MaterialLabel
     Friend WithEvents tb_given_name As MaterialSkin.Controls.MaterialMultiLineTextBox
+    Friend WithEvents cb_aye As MaterialSkin.Controls.MaterialComboBox
+    Friend WithEvents lbl_aye As MaterialSkin.Controls.MaterialLabel
 End Class

@@ -14,6 +14,12 @@ Public Class Update_Student
     End Sub
 
     Private Sub LoadStudentData()
+        cb_aye.Items.Clear()
+        For yr = Int(Date.Now.Year) To 1980 Step -1
+            cb_aye.Items.Add(yr)
+        Next
+
+
         Dim db As New DBConn
         db.Open()
         Dim cmd = db.cmd
@@ -43,9 +49,23 @@ Public Class Update_Student
                 dtp_dob.Value = dr.Item("DOB")
                 tb_age.Text = dr.Item("age").ToString
                 cb_civil_status.SelectedIndex = cb_civil_status.FindStringExact(dr.Item("civil_status").ToString)
+                If dr.Item("AYE") IsNot DBNull.Value Then
+                    cb_aye.SelectedIndex = cb_aye.FindStringExact(Int(dr.Item("AYE")))
+                End If
             End While
         End If
         db.Close()
+
+
+    End Sub
+
+    Private Sub Ageload()
+        Dim age As TimeSpan = DateTime.Now - dtp_dob.Value
+        Dim calc_age = Int(age.Days / 365)
+        If calc_age < 0 Then
+            calc_age = 0
+        End If
+        tb_age.Text = calc_age.ToString()
     End Sub
 
     Private Sub btn_enroll_Click(sender As Object, e As EventArgs) Handles btn_enroll.Click
@@ -61,7 +81,7 @@ Public Class Update_Student
                 Dim cmd = db.cmd
                 cmd.Connection = db.conn
 
-                cmd.CommandText = "UPDATE students SET family_name=@fn, given_name=@gn, middle_name=@mn, course=@course, ""EdAt_Elem""=@ee, ""EdAt_HS""=@eh, ""EdAt_Vocational""=@ev, ""EdAt_College""=@ec, occupation=@o, present_job=@pj, occupation_address=@oa, employer=@e, spouse_occupation=@so, contact_number=@cn, home_address=@ha, ""DOB""=@DOB, age=@age, civil_status=@cs WHERE id=@id"
+                cmd.CommandText = "UPDATE students SET family_name=@fn, given_name=@gn, middle_name=@mn, course=@course, ""EdAt_Elem""=@ee, ""EdAt_HS""=@eh, ""EdAt_Vocational""=@ev, ""EdAt_College""=@ec, occupation=@o, present_job=@pj, occupation_address=@oa, employer=@e, spouse_occupation=@so, contact_number=@cn, home_address=@ha, ""DOB""=@DOB, age=@age, civil_status=@cs, ""AYE""=@AYE WHERE id=@id"
                 cmd.Parameters.AddWithValue("@fn", tb_family_name.Text)
                 cmd.Parameters.AddWithValue("@gn", tb_given_name.Text)
                 cmd.Parameters.AddWithValue("@mn", tb_middle_name.Text)
@@ -81,6 +101,8 @@ Public Class Update_Student
                 cmd.Parameters.AddWithValue("@age", Integer.Parse(tb_age.Text))
                 cmd.Parameters.AddWithValue("@cs", cb_civil_status.SelectedItem.ToString)
                 cmd.Parameters.AddWithValue("@id", selected_id)
+                cmd.Parameters.AddWithValue("@AYE", cb_aye.SelectedItem.ToString)
+
 
                 Try
                     If cmd.ExecuteNonQuery Then
@@ -94,5 +116,9 @@ Public Class Update_Student
                 db.Close()
             End If
         End If
+    End Sub
+
+    Private Sub dtp_dob_ValueChanged(sender As Object, e As EventArgs) Handles dtp_dob.ValueChanged
+        Ageload()
     End Sub
 End Class

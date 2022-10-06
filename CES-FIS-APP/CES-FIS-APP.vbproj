@@ -230,10 +230,10 @@
       <DependentUpon>CR_Expenses.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\CR_Funds.vb">
+    <Compile Include="Reports\CR_CashBalance.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CR_Funds.rpt</DependentUpon>
+      <DependentUpon>CR_CashBalance.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report_Class.vb" />
@@ -283,9 +283,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CR_Expenses.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\CR_Funds.rpt">
+    <EmbeddedResource Include="Reports\CR_CashBalance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CR_Funds.vb</LastGenOutput>
+      <LastGenOutput>CR_CashBalance.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report_Form.resx">
       <DependentUpon>Report_Form.vb</DependentUpon>

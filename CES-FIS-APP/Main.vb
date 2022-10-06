@@ -36,8 +36,8 @@ Public Class Main
                 Dim cmd = db.cmd
                 cmd.Connection = db.conn
 
-                cmd.CommandText = "INSERT INTO students (family_name, given_name, middle_name, course, ""EdAt_Elem"", ""EdAt_HS"", ""EdAt_Vocational"", ""EdAt_College"", occupation, present_job, occupation_address, employer, spouse_occupation, contact_number, home_address, ""DOB"", age, civil_status)
-                                    VALUES (@fn,@gn,@mn,@course,@ee,@eh,@ev,@ec,@o,@pj,@oa,@e,@so,@cn,@ha,@DOB,@age,@cs)"
+                cmd.CommandText = "INSERT INTO students (family_name, given_name, middle_name, course, ""EdAt_Elem"", ""EdAt_HS"", ""EdAt_Vocational"", ""EdAt_College"", occupation, present_job, occupation_address, employer, spouse_occupation, contact_number, home_address, ""DOB"", age, civil_status, ""AYE"")
+                                    VALUES (@fn,@gn,@mn,@course,@ee,@eh,@ev,@ec,@o,@pj,@oa,@e,@so,@cn,@ha,@DOB,@age,@cs, @AYE)"
                 cmd.Parameters.AddWithValue("@fn", tb_family_name.Text)
                 cmd.Parameters.AddWithValue("@gn", tb_given_name.Text)
                 cmd.Parameters.AddWithValue("@mn", tb_middle_name.Text)
@@ -56,6 +56,8 @@ Public Class Main
                 cmd.Parameters.AddWithValue("@DOB", dtp_dob.Value.Date)
                 cmd.Parameters.AddWithValue("@age", Integer.Parse(tb_age.Text))
                 cmd.Parameters.AddWithValue("@cs", cb_civil_status.SelectedItem)
+                cmd.Parameters.AddWithValue("@AYE", cb_aye.SelectedValue.ToString)
+
                 Try
                     If cmd.ExecuteNonQuery Then
                         MessageBox.Show("Student successfully enrolled!.")
@@ -145,8 +147,11 @@ Public Class Main
         ElseIf MTC_MAIN.SelectedTab.Text = "Expenses" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             ResetDate()
-            LoadExpensesTable()
+            LoadExpensesTable(all:=True)
             LoadExpenseCardDesign()
+
+
+
         ElseIf MTC_MAIN.SelectedTab.Text = "Reports" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             ReportsTabDesign()
@@ -155,6 +160,12 @@ Public Class Main
             LoadAllRecord()
         ElseIf MTC_MAIN.SelectedTab.Text = "Enroll" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
+            cb_aye.Items.Clear()
+            For yr = Int(Date.Now.Year) To 1980 Step -1
+                cb_aye.Items.Add(yr)
+            Next
+            cb_aye.SelectedIndex = 0
+
         ElseIf MTC_MAIN.SelectedTab.Text = "Accounts" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             AccountsTabDesign()
@@ -443,7 +454,7 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub LoadExpensesTable()
+    Private Sub LoadExpensesTable(Optional all As Boolean = False)
         Dim date_from As Date = dtp_expenses_date_filter_before.Value.Date
         Dim date_to As Date = dtp_expenses_date_filter_after.Value.Date
         Dim db As New DBConn
@@ -451,6 +462,9 @@ Public Class Main
         Dim cmd = db.cmd
         cmd.Connection = db.conn
         Dim QS As String = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", amount as ""Amount"", date as ""Date"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "' ORDER BY id DESC"
+        If all Then
+            QS = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", amount as ""Amount"", date as ""Date"" FROM expenses ORDER BY id DESC"
+        End If
         cmd.CommandText = QS
 
         Dim da = db.da
@@ -460,10 +474,11 @@ Public Class Main
         da.Fill(dt)
         dgv_expenses.DataSource = dt
         db.Close()
-        LoadTotalExpense()
+
+        LoadTotalExpense(all:=If(all, True, False))
     End Sub
 
-    Private Sub LoadTotalExpense()
+    Private Sub LoadTotalExpense(Optional all As Boolean = False)
         Dim date_from As Date = dtp_expenses_date_filter_before.Value.Date
         Dim date_to As Date = dtp_expenses_date_filter_after.Value.Date
 
@@ -471,12 +486,21 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount), 'FM9,999,999') as ""Total"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
+        If all Then
+            cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount), 'FM9,999,999') as ""Total"", (SELECT to_char(SUM(added_amount), 'FM9,999,999') as ""FundsTotal"" FROM funds_transactions) FROM expenses"
+        Else
+            cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount), 'FM9,999,999') as ""Total"", (SELECT to_char(SUM(added_amount), 'FM9,999,999') as ""FundsTotal"" FROM funds_transactions) FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
+        End If
+
         Dim dr = db.dr
         dr = cmd.ExecuteReader
         If dr.HasRows Then
             While dr.Read
-                lbl_expense_total_value.Text = "₱" + If(dr.Item("Total") IsNot DBNull.Value, dr.Item("Total"), 0).ToString
+                Dim bae As Double = If(dr.Item("FundsTotal") IsNot DBNull.Value, dr.Item("FundsTotal"), 0)
+                Dim exp_total As Double = If(dr.Item("Total") IsNot DBNull.Value, dr.Item("Total"), 0)
+
+                lbl_expense_total_value.Text = "₱" + exp_total.ToString
+                lbl_bae.Text = "₱" + (bae - exp_total).ToString
             End While
         End If
         db.Close()
@@ -485,6 +509,9 @@ Public Class Main
     Private Sub LoadExpenseCardDesign()
         lbl_expense_total_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
         lbl_expense_total_value.ForeColor = Color.Green
+        lbl_bae.Font = New Drawing.Font("Roboto", 15, FontStyle.Underline)
+        lbl_bae.ForeColor = Color.Red
+
     End Sub
 
     Private Sub btn_expenses_add_Click(sender As Object, e As EventArgs) Handles btn_expenses_add.Click
@@ -550,8 +577,10 @@ Public Class Main
     End Sub
 
     Private Sub ResetDate()
-        dtp_expenses_date_filter_before.Value = dtp_expenses_date_filter_before.MinDate
+        dtp_expenses_date_filter_before.Value = DateTime.Now.Date
         dtp_expenses_date_filter_after.Value = DateTime.Now.Date
+        LoadExpensesTable(all:=True)
+
     End Sub
 
     Private Sub btn_expenses_date_filter_Click(sender As Object, e As EventArgs) Handles btn_expenses_date_filter.Click
@@ -563,12 +592,12 @@ Public Class Main
     End Sub
 
     Private Sub btn_generate_report_Click(sender As Object, e As EventArgs) Handles btn_generate_report.Click
-        If cb_reports.SelectedItem = "Funds" Then
+        If cb_reports.SelectedItem = "Cash Balance" Then
             Dim rc As New Report_Class
             rc.From_Date = dtp_reports_from.Value.Date
             rc.To_Date = dtp_reports_to.Value.Date
             Dim rf As New Report_Form
-            Dim report As New CR_Funds
+            Dim report As New CR_CashBalance
             report.SetDataSource(rc.GenerateFunds)
             report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
             rf.CrystalReportViewer1.ReportSource = report
@@ -705,5 +734,13 @@ Public Class Main
         lbl_director_main.ForeColor = Color.Black
     End Sub
 
-
+    Private Sub dgv_funds_DataSourceChanged(sender As Object, e As EventArgs) Handles dgv_funds.DataSourceChanged
+        If dgv_funds.Rows.Count <> 0 Then
+            btn_transaction_history.Enabled = True
+            btn_add_funds.Enabled = True
+        Else
+            btn_transaction_history.Enabled = False
+            btn_add_funds.Enabled = False
+        End If
+    End Sub
 End Class

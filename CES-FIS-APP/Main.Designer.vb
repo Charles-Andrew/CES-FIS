@@ -24,12 +24,14 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
+        Me.cb_aye = New MaterialSkin.Controls.MaterialComboBox()
+        Me.lbl_aye = New MaterialSkin.Controls.MaterialLabel()
         Me.tb_age = New MaterialSkin.Controls.MaterialTextBox2()
         Me.btn_enroll = New MaterialSkin.Controls.MaterialButton()
         Me.tb_spouse_occupation = New MaterialSkin.Controls.MaterialMultiLineTextBox()
@@ -109,6 +111,7 @@ Partial Class Main
         Me.dgv_funds = New System.Windows.Forms.DataGridView()
         Me.tp5 = New System.Windows.Forms.TabPage()
         Me.gb_expenses = New System.Windows.Forms.GroupBox()
+        Me.lbl_availablefunds = New MaterialSkin.Controls.MaterialLabel()
         Me.btn_expenses_reset = New MaterialSkin.Controls.MaterialButton()
         Me.btn_expenses_delete = New MaterialSkin.Controls.MaterialButton()
         Me.btn_expenses_date_filter = New MaterialSkin.Controls.MaterialButton()
@@ -160,6 +163,7 @@ Partial Class Main
         Me.MaterialLabel3 = New MaterialSkin.Controls.MaterialLabel()
         Me.MaterialLabel2 = New MaterialSkin.Controls.MaterialLabel()
         Me.tp8 = New System.Windows.Forms.TabPage()
+        Me.lbl_bae = New System.Windows.Forms.Label()
         Me.tp2.SuspendLayout()
         Me.gb_enroll.SuspendLayout()
         Me.tp3.SuspendLayout()
@@ -219,6 +223,8 @@ Partial Class Main
         'gb_enroll
         '
         Me.gb_enroll.BackColor = System.Drawing.Color.White
+        Me.gb_enroll.Controls.Add(Me.cb_aye)
+        Me.gb_enroll.Controls.Add(Me.lbl_aye)
         Me.gb_enroll.Controls.Add(Me.tb_age)
         Me.gb_enroll.Controls.Add(Me.btn_enroll)
         Me.gb_enroll.Controls.Add(Me.tb_spouse_occupation)
@@ -263,6 +269,40 @@ Partial Class Main
         Me.gb_enroll.Size = New System.Drawing.Size(931, 484)
         Me.gb_enroll.TabIndex = 0
         Me.gb_enroll.TabStop = False
+        '
+        'cb_aye
+        '
+        Me.cb_aye.AutoResize = False
+        Me.cb_aye.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cb_aye.Depth = 0
+        Me.cb_aye.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
+        Me.cb_aye.DropDownHeight = 174
+        Me.cb_aye.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_aye.DropDownWidth = 121
+        Me.cb_aye.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
+        Me.cb_aye.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.cb_aye.FormattingEnabled = True
+        Me.cb_aye.IntegralHeight = False
+        Me.cb_aye.ItemHeight = 43
+        Me.cb_aye.Location = New System.Drawing.Point(585, 58)
+        Me.cb_aye.MaxDropDownItems = 4
+        Me.cb_aye.MouseState = MaterialSkin.MouseState.OUT
+        Me.cb_aye.Name = "cb_aye"
+        Me.cb_aye.Size = New System.Drawing.Size(121, 49)
+        Me.cb_aye.StartIndex = 0
+        Me.cb_aye.TabIndex = 41
+        '
+        'lbl_aye
+        '
+        Me.lbl_aye.AutoSize = True
+        Me.lbl_aye.Depth = 0
+        Me.lbl_aye.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.lbl_aye.Location = New System.Drawing.Point(385, 61)
+        Me.lbl_aye.MouseState = MaterialSkin.MouseState.HOVER
+        Me.lbl_aye.Name = "lbl_aye"
+        Me.lbl_aye.Size = New System.Drawing.Size(172, 19)
+        Me.lbl_aye.TabIndex = 40
+        Me.lbl_aye.Text = "Academic Year Enrolled:"
         '
         'tb_age
         '
@@ -318,7 +358,7 @@ Partial Class Main
         Me.tb_spouse_occupation.Depth = 0
         Me.tb_spouse_occupation.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_spouse_occupation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_spouse_occupation.Location = New System.Drawing.Point(559, 386)
+        Me.tb_spouse_occupation.Location = New System.Drawing.Point(559, 419)
         Me.tb_spouse_occupation.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_spouse_occupation.Name = "tb_spouse_occupation"
         Me.tb_spouse_occupation.Size = New System.Drawing.Size(351, 29)
@@ -332,7 +372,7 @@ Partial Class Main
         Me.tb_employer.Depth = 0
         Me.tb_employer.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_employer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_employer.Location = New System.Drawing.Point(559, 351)
+        Me.tb_employer.Location = New System.Drawing.Point(559, 384)
         Me.tb_employer.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_employer.Name = "tb_employer"
         Me.tb_employer.Size = New System.Drawing.Size(351, 29)
@@ -346,7 +386,7 @@ Partial Class Main
         Me.tb_occupation_address.Depth = 0
         Me.tb_occupation_address.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_occupation_address.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_occupation_address.Location = New System.Drawing.Point(559, 316)
+        Me.tb_occupation_address.Location = New System.Drawing.Point(559, 349)
         Me.tb_occupation_address.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_occupation_address.Name = "tb_occupation_address"
         Me.tb_occupation_address.Size = New System.Drawing.Size(351, 29)
@@ -360,7 +400,7 @@ Partial Class Main
         Me.tb_present_job.Depth = 0
         Me.tb_present_job.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_present_job.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_present_job.Location = New System.Drawing.Point(559, 281)
+        Me.tb_present_job.Location = New System.Drawing.Point(559, 314)
         Me.tb_present_job.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_present_job.Name = "tb_present_job"
         Me.tb_present_job.Size = New System.Drawing.Size(351, 29)
@@ -374,7 +414,7 @@ Partial Class Main
         Me.tb_occupation.Depth = 0
         Me.tb_occupation.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_occupation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_occupation.Location = New System.Drawing.Point(559, 246)
+        Me.tb_occupation.Location = New System.Drawing.Point(559, 279)
         Me.tb_occupation.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_occupation.Name = "tb_occupation"
         Me.tb_occupation.Size = New System.Drawing.Size(351, 29)
@@ -388,7 +428,7 @@ Partial Class Main
         Me.tb_edat_vocational.Depth = 0
         Me.tb_edat_vocational.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_vocational.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_vocational.Location = New System.Drawing.Point(585, 189)
+        Me.tb_edat_vocational.Location = New System.Drawing.Point(585, 240)
         Me.tb_edat_vocational.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_vocational.Name = "tb_edat_vocational"
         Me.tb_edat_vocational.Size = New System.Drawing.Size(325, 29)
@@ -402,7 +442,7 @@ Partial Class Main
         Me.tb_edat_college.Depth = 0
         Me.tb_edat_college.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_college.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_college.Location = New System.Drawing.Point(585, 154)
+        Me.tb_edat_college.Location = New System.Drawing.Point(585, 205)
         Me.tb_edat_college.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_college.Name = "tb_edat_college"
         Me.tb_edat_college.Size = New System.Drawing.Size(325, 29)
@@ -416,7 +456,7 @@ Partial Class Main
         Me.tb_edat_hs.Depth = 0
         Me.tb_edat_hs.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_hs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_hs.Location = New System.Drawing.Point(585, 119)
+        Me.tb_edat_hs.Location = New System.Drawing.Point(585, 170)
         Me.tb_edat_hs.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_hs.Name = "tb_edat_hs"
         Me.tb_edat_hs.Size = New System.Drawing.Size(325, 29)
@@ -430,7 +470,7 @@ Partial Class Main
         Me.tb_edat_elem.Depth = 0
         Me.tb_edat_elem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_edat_elem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.tb_edat_elem.Location = New System.Drawing.Point(585, 84)
+        Me.tb_edat_elem.Location = New System.Drawing.Point(585, 135)
         Me.tb_edat_elem.MouseState = MaterialSkin.MouseState.HOVER
         Me.tb_edat_elem.Name = "tb_edat_elem"
         Me.tb_edat_elem.Size = New System.Drawing.Size(325, 29)
@@ -442,7 +482,7 @@ Partial Class Main
         Me.lbl_so.AutoSize = True
         Me.lbl_so.Depth = 0
         Me.lbl_so.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_so.Location = New System.Drawing.Point(385, 386)
+        Me.lbl_so.Location = New System.Drawing.Point(385, 419)
         Me.lbl_so.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_so.Name = "lbl_so"
         Me.lbl_so.Size = New System.Drawing.Size(143, 19)
@@ -454,7 +494,7 @@ Partial Class Main
         Me.lbl_employer.AutoSize = True
         Me.lbl_employer.Depth = 0
         Me.lbl_employer.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_employer.Location = New System.Drawing.Point(385, 351)
+        Me.lbl_employer.Location = New System.Drawing.Point(385, 384)
         Me.lbl_employer.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_employer.Name = "lbl_employer"
         Me.lbl_employer.Size = New System.Drawing.Size(71, 19)
@@ -466,7 +506,7 @@ Partial Class Main
         Me.lbl_oa.AutoSize = True
         Me.lbl_oa.Depth = 0
         Me.lbl_oa.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_oa.Location = New System.Drawing.Point(385, 316)
+        Me.lbl_oa.Location = New System.Drawing.Point(385, 349)
         Me.lbl_oa.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_oa.Name = "lbl_oa"
         Me.lbl_oa.Size = New System.Drawing.Size(147, 19)
@@ -478,7 +518,7 @@ Partial Class Main
         Me.lbl_first_job.AutoSize = True
         Me.lbl_first_job.Depth = 0
         Me.lbl_first_job.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_first_job.Location = New System.Drawing.Point(385, 281)
+        Me.lbl_first_job.Location = New System.Drawing.Point(385, 314)
         Me.lbl_first_job.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_first_job.Name = "lbl_first_job"
         Me.lbl_first_job.Size = New System.Drawing.Size(89, 19)
@@ -490,7 +530,7 @@ Partial Class Main
         Me.lbl_occupation.AutoSize = True
         Me.lbl_occupation.Depth = 0
         Me.lbl_occupation.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_occupation.Location = New System.Drawing.Point(385, 246)
+        Me.lbl_occupation.Location = New System.Drawing.Point(385, 279)
         Me.lbl_occupation.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_occupation.Name = "lbl_occupation"
         Me.lbl_occupation.Size = New System.Drawing.Size(86, 19)
@@ -502,7 +542,7 @@ Partial Class Main
         Me.lbl_eav.AutoSize = True
         Me.lbl_eav.Depth = 0
         Me.lbl_eav.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eav.Location = New System.Drawing.Point(415, 184)
+        Me.lbl_eav.Location = New System.Drawing.Point(415, 235)
         Me.lbl_eav.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eav.Name = "lbl_eav"
         Me.lbl_eav.Size = New System.Drawing.Size(81, 19)
@@ -514,7 +554,7 @@ Partial Class Main
         Me.lbl_eac.AutoSize = True
         Me.lbl_eac.Depth = 0
         Me.lbl_eac.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eac.Location = New System.Drawing.Point(415, 152)
+        Me.lbl_eac.Location = New System.Drawing.Point(415, 203)
         Me.lbl_eac.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eac.Name = "lbl_eac"
         Me.lbl_eac.Size = New System.Drawing.Size(57, 19)
@@ -526,7 +566,7 @@ Partial Class Main
         Me.lbl_eah.AutoSize = True
         Me.lbl_eah.Depth = 0
         Me.lbl_eah.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eah.Location = New System.Drawing.Point(415, 122)
+        Me.lbl_eah.Location = New System.Drawing.Point(415, 173)
         Me.lbl_eah.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eah.Name = "lbl_eah"
         Me.lbl_eah.Size = New System.Drawing.Size(91, 19)
@@ -538,7 +578,7 @@ Partial Class Main
         Me.lbl_eae.AutoSize = True
         Me.lbl_eae.Depth = 0
         Me.lbl_eae.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_eae.Location = New System.Drawing.Point(415, 86)
+        Me.lbl_eae.Location = New System.Drawing.Point(415, 137)
         Me.lbl_eae.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_eae.Name = "lbl_eae"
         Me.lbl_eae.Size = New System.Drawing.Size(84, 19)
@@ -550,7 +590,7 @@ Partial Class Main
         Me.lbl_ea.AutoSize = True
         Me.lbl_ea.Depth = 0
         Me.lbl_ea.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_ea.Location = New System.Drawing.Point(385, 52)
+        Me.lbl_ea.Location = New System.Drawing.Point(385, 116)
         Me.lbl_ea.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_ea.Name = "lbl_ea"
         Me.lbl_ea.Size = New System.Drawing.Size(171, 19)
@@ -1276,17 +1316,17 @@ Partial Class Main
         Me.chart_funds.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.chart_funds.BackSecondaryColor = System.Drawing.Color.Transparent
         Me.chart_funds.BorderlineColor = System.Drawing.Color.Transparent
-        ChartArea1.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend1)
+        ChartArea3.Name = "ChartArea1"
+        Me.chart_funds.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.chart_funds.Legends.Add(Legend3)
         Me.chart_funds.Location = New System.Drawing.Point(523, 19)
         Me.chart_funds.Name = "chart_funds"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series1.Legend = "Legend1"
-        Series1.Name = "s1"
-        Me.chart_funds.Series.Add(Series1)
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series3.Legend = "Legend1"
+        Series3.Name = "s1"
+        Me.chart_funds.Series.Add(Series3)
         Me.chart_funds.Size = New System.Drawing.Size(385, 384)
         Me.chart_funds.TabIndex = 8
         Me.chart_funds.Text = "Funds"
@@ -1420,6 +1460,8 @@ Partial Class Main
         'gb_expenses
         '
         Me.gb_expenses.BackColor = System.Drawing.Color.White
+        Me.gb_expenses.Controls.Add(Me.lbl_bae)
+        Me.gb_expenses.Controls.Add(Me.lbl_availablefunds)
         Me.gb_expenses.Controls.Add(Me.btn_expenses_reset)
         Me.gb_expenses.Controls.Add(Me.btn_expenses_delete)
         Me.gb_expenses.Controls.Add(Me.btn_expenses_date_filter)
@@ -1443,6 +1485,18 @@ Partial Class Main
         Me.gb_expenses.TabIndex = 0
         Me.gb_expenses.TabStop = False
         '
+        'lbl_availablefunds
+        '
+        Me.lbl_availablefunds.AutoSize = True
+        Me.lbl_availablefunds.Depth = 0
+        Me.lbl_availablefunds.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.lbl_availablefunds.Location = New System.Drawing.Point(443, 16)
+        Me.lbl_availablefunds.MouseState = MaterialSkin.MouseState.HOVER
+        Me.lbl_availablefunds.Name = "lbl_availablefunds"
+        Me.lbl_availablefunds.Size = New System.Drawing.Size(171, 19)
+        Me.lbl_availablefunds.TabIndex = 21
+        Me.lbl_availablefunds.Text = "Balance After Expenses:"
+        '
         'btn_expenses_reset
         '
         Me.btn_expenses_reset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
@@ -1450,14 +1504,14 @@ Partial Class Main
         Me.btn_expenses_reset.Depth = 0
         Me.btn_expenses_reset.HighEmphasis = True
         Me.btn_expenses_reset.Icon = Nothing
-        Me.btn_expenses_reset.Location = New System.Drawing.Point(630, 448)
+        Me.btn_expenses_reset.Location = New System.Drawing.Point(612, 448)
         Me.btn_expenses_reset.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.btn_expenses_reset.MouseState = MaterialSkin.MouseState.HOVER
         Me.btn_expenses_reset.Name = "btn_expenses_reset"
         Me.btn_expenses_reset.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_expenses_reset.Size = New System.Drawing.Size(65, 36)
+        Me.btn_expenses_reset.Size = New System.Drawing.Size(86, 36)
         Me.btn_expenses_reset.TabIndex = 9
-        Me.btn_expenses_reset.Text = "Reset"
+        Me.btn_expenses_reset.Text = "View All"
         Me.btn_expenses_reset.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
         Me.btn_expenses_reset.UseAccentColor = False
         Me.btn_expenses_reset.UseVisualStyleBackColor = True
@@ -1586,7 +1640,7 @@ Partial Class Main
         Me.tb_expenses_desc.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.tb_expenses_desc.Depth = 0
         Me.tb_expenses_desc.HideSelection = True
-        Me.tb_expenses_desc.Location = New System.Drawing.Point(534, 19)
+        Me.tb_expenses_desc.Location = New System.Drawing.Point(534, 56)
         Me.tb_expenses_desc.MaxLength = 32767
         Me.tb_expenses_desc.MouseState = MaterialSkin.MouseState.OUT
         Me.tb_expenses_desc.Name = "tb_expenses_desc"
@@ -1607,7 +1661,7 @@ Partial Class Main
         '
         Me.dtp_expenses_date.CalendarFont = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtp_expenses_date.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtp_expenses_date.Location = New System.Drawing.Point(534, 191)
+        Me.dtp_expenses_date.Location = New System.Drawing.Point(534, 228)
         Me.dtp_expenses_date.Name = "dtp_expenses_date"
         Me.dtp_expenses_date.Size = New System.Drawing.Size(333, 25)
         Me.dtp_expenses_date.TabIndex = 3
@@ -1617,7 +1671,7 @@ Partial Class Main
         Me.lbl_date.AutoSize = True
         Me.lbl_date.Depth = 0
         Me.lbl_date.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_date.Location = New System.Drawing.Point(490, 191)
+        Me.lbl_date.Location = New System.Drawing.Point(490, 228)
         Me.lbl_date.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_date.Name = "lbl_date"
         Me.lbl_date.Size = New System.Drawing.Size(38, 19)
@@ -1633,7 +1687,7 @@ Partial Class Main
         Me.tb_expenses_amount.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.tb_expenses_amount.HideSelection = True
         Me.tb_expenses_amount.LeadingIcon = Nothing
-        Me.tb_expenses_amount.Location = New System.Drawing.Point(534, 127)
+        Me.tb_expenses_amount.Location = New System.Drawing.Point(534, 164)
         Me.tb_expenses_amount.MaxLength = 7
         Me.tb_expenses_amount.MouseState = MaterialSkin.MouseState.OUT
         Me.tb_expenses_amount.Name = "tb_expenses_amount"
@@ -1659,7 +1713,7 @@ Partial Class Main
         Me.btn_expenses_add.Depth = 0
         Me.btn_expenses_add.HighEmphasis = True
         Me.btn_expenses_add.Icon = Nothing
-        Me.btn_expenses_add.Location = New System.Drawing.Point(636, 236)
+        Me.btn_expenses_add.Location = New System.Drawing.Point(636, 273)
         Me.btn_expenses_add.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.btn_expenses_add.MouseState = MaterialSkin.MouseState.HOVER
         Me.btn_expenses_add.Name = "btn_expenses_add"
@@ -1676,7 +1730,7 @@ Partial Class Main
         Me.lbl_expenses_amount.AutoSize = True
         Me.lbl_expenses_amount.Depth = 0
         Me.lbl_expenses_amount.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_expenses_amount.Location = New System.Drawing.Point(467, 127)
+        Me.lbl_expenses_amount.Location = New System.Drawing.Point(467, 164)
         Me.lbl_expenses_amount.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_expenses_amount.Name = "lbl_expenses_amount"
         Me.lbl_expenses_amount.Size = New System.Drawing.Size(61, 19)
@@ -1688,7 +1742,7 @@ Partial Class Main
         Me.lbl_expenses_description.AutoSize = True
         Me.lbl_expenses_description.Depth = 0
         Me.lbl_expenses_description.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.lbl_expenses_description.Location = New System.Drawing.Point(443, 19)
+        Me.lbl_expenses_description.Location = New System.Drawing.Point(443, 56)
         Me.lbl_expenses_description.MouseState = MaterialSkin.MouseState.HOVER
         Me.lbl_expenses_description.Name = "lbl_expenses_description"
         Me.lbl_expenses_description.Size = New System.Drawing.Size(85, 19)
@@ -1778,7 +1832,7 @@ Partial Class Main
         Me.cb_reports.FormattingEnabled = True
         Me.cb_reports.IntegralHeight = False
         Me.cb_reports.ItemHeight = 43
-        Me.cb_reports.Items.AddRange(New Object() {"Funds", "Expenses"})
+        Me.cb_reports.Items.AddRange(New Object() {"Cash Balance", "Expenses"})
         Me.cb_reports.Location = New System.Drawing.Point(17, 79)
         Me.cb_reports.MaxDropDownItems = 4
         Me.cb_reports.MouseState = MaterialSkin.MouseState.OUT
@@ -2246,6 +2300,15 @@ Partial Class Main
         Me.tp8.Text = "Logout"
         Me.tp8.UseVisualStyleBackColor = True
         '
+        'lbl_bae
+        '
+        Me.lbl_bae.AutoSize = True
+        Me.lbl_bae.Location = New System.Drawing.Point(620, 9)
+        Me.lbl_bae.Name = "lbl_bae"
+        Me.lbl_bae.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_bae.TabIndex = 9
+        Me.lbl_bae.Text = "Label4"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2440,4 +2503,8 @@ Partial Class Main
     Friend WithEvents lbl_admin_main As Label
     Friend WithEvents tp8 As TabPage
     Friend WithEvents btn_delete_payment_record As MaterialSkin.Controls.MaterialButton
+    Friend WithEvents lbl_aye As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents cb_aye As MaterialSkin.Controls.MaterialComboBox
+    Friend WithEvents lbl_availablefunds As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents lbl_bae As Label
 End Class
