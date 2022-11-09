@@ -47,5 +47,24 @@
         Return dt
     End Function
 
+    Public Function GenerateCashBalance() As List(Of String)
+        Dim db As New DBConn
+        db.Open()
+        Dim cmd = db.cmd
+        cmd.Connection = db.conn
+        cmd.CommandText = "SET datestyle = dmy;SELECT SUM(amount) as total_cashout, (SELECT SUM(added_amount) as total_cashin FROM funds_transactions) FROM expenses WHERE date >= '" + From_Date + "' AND date <= '" + To_Date + "'"
+        Dim dr = db.dr
+        Dim vals As New List(Of String)
+        dr = cmd.ExecuteReader
+        If dr.HasRows Then
+            While dr.Read
+                vals.Add(dr.Item("total_cashin").ToString())
+                vals.Add(dr.Item("total_cashout").ToString())
+            End While
+        End If
+        db.Close()
+        Return vals
+    End Function
+
 
 End Class

@@ -24,9 +24,9 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
@@ -111,6 +111,7 @@ Partial Class Main
         Me.dgv_funds = New System.Windows.Forms.DataGridView()
         Me.tp5 = New System.Windows.Forms.TabPage()
         Me.gb_expenses = New System.Windows.Forms.GroupBox()
+        Me.lbl_bae = New System.Windows.Forms.Label()
         Me.lbl_availablefunds = New MaterialSkin.Controls.MaterialLabel()
         Me.btn_expenses_reset = New MaterialSkin.Controls.MaterialButton()
         Me.btn_expenses_delete = New MaterialSkin.Controls.MaterialButton()
@@ -163,7 +164,6 @@ Partial Class Main
         Me.MaterialLabel3 = New MaterialSkin.Controls.MaterialLabel()
         Me.MaterialLabel2 = New MaterialSkin.Controls.MaterialLabel()
         Me.tp8 = New System.Windows.Forms.TabPage()
-        Me.lbl_bae = New System.Windows.Forms.Label()
         Me.tp2.SuspendLayout()
         Me.gb_enroll.SuspendLayout()
         Me.tp3.SuspendLayout()
@@ -1316,17 +1316,17 @@ Partial Class Main
         Me.chart_funds.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.chart_funds.BackSecondaryColor = System.Drawing.Color.Transparent
         Me.chart_funds.BorderlineColor = System.Drawing.Color.Transparent
-        ChartArea3.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend3)
+        ChartArea1.Name = "ChartArea1"
+        Me.chart_funds.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.chart_funds.Legends.Add(Legend1)
         Me.chart_funds.Location = New System.Drawing.Point(523, 19)
         Me.chart_funds.Name = "chart_funds"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series3.Legend = "Legend1"
-        Series3.Name = "s1"
-        Me.chart_funds.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series1.Legend = "Legend1"
+        Series1.Name = "s1"
+        Me.chart_funds.Series.Add(Series1)
         Me.chart_funds.Size = New System.Drawing.Size(385, 384)
         Me.chart_funds.TabIndex = 8
         Me.chart_funds.Text = "Funds"
@@ -1484,6 +1484,15 @@ Partial Class Main
         Me.gb_expenses.Size = New System.Drawing.Size(914, 490)
         Me.gb_expenses.TabIndex = 0
         Me.gb_expenses.TabStop = False
+        '
+        'lbl_bae
+        '
+        Me.lbl_bae.AutoSize = True
+        Me.lbl_bae.Location = New System.Drawing.Point(620, 9)
+        Me.lbl_bae.Name = "lbl_bae"
+        Me.lbl_bae.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_bae.TabIndex = 9
+        Me.lbl_bae.Text = "Label4"
         '
         'lbl_availablefunds
         '
@@ -1832,7 +1841,7 @@ Partial Class Main
         Me.cb_reports.FormattingEnabled = True
         Me.cb_reports.IntegralHeight = False
         Me.cb_reports.ItemHeight = 43
-        Me.cb_reports.Items.AddRange(New Object() {"Cash Balance", "Expenses"})
+        Me.cb_reports.Items.AddRange(New Object() {"Cash Balance", "Cash In", "Cash Out"})
         Me.cb_reports.Location = New System.Drawing.Point(17, 79)
         Me.cb_reports.MaxDropDownItems = 4
         Me.cb_reports.MouseState = MaterialSkin.MouseState.OUT
@@ -2299,15 +2308,6 @@ Partial Class Main
         Me.tp8.TabIndex = 7
         Me.tp8.Text = "Logout"
         Me.tp8.UseVisualStyleBackColor = True
-        '
-        'lbl_bae
-        '
-        Me.lbl_bae.AutoSize = True
-        Me.lbl_bae.Location = New System.Drawing.Point(620, 9)
-        Me.lbl_bae.Name = "lbl_bae"
-        Me.lbl_bae.Size = New System.Drawing.Size(39, 13)
-        Me.lbl_bae.TabIndex = 9
-        Me.lbl_bae.Text = "Label4"
         '
         'Main
         '

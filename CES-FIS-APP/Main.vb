@@ -592,13 +592,23 @@ Public Class Main
     End Sub
 
     Private Sub btn_generate_report_Click(sender As Object, e As EventArgs) Handles btn_generate_report.Click
-        If cb_reports.SelectedItem = "Cash Balance" Then
+        If cb_reports.SelectedItem = "Cash In" Then
             Dim rc As New Report_Class
             rc.From_Date = dtp_reports_from.Value.Date
             rc.To_Date = dtp_reports_to.Value.Date
             Dim rf As New Report_Form
-            Dim report As New CR_CashBalance
+            Dim report As New CR_CashIn
             report.SetDataSource(rc.GenerateFunds)
+            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
+            rf.CrystalReportViewer1.ReportSource = report
+            rf.ShowDialog()
+        ElseIf cb_reports.SelectedItem = "Cash Out" Then
+            Dim rc As New Report_Class
+            rc.From_Date = dtp_reports_from.Value.Date
+            rc.To_Date = dtp_reports_to.Value.Date
+            Dim rf As New Report_Form
+            Dim report As New CR_Cashout
+            report.SetDataSource(rc.GenerateExpenses)
             report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
             rf.CrystalReportViewer1.ReportSource = report
             rf.ShowDialog()
@@ -606,10 +616,17 @@ Public Class Main
             Dim rc As New Report_Class
             rc.From_Date = dtp_reports_from.Value.Date
             rc.To_Date = dtp_reports_to.Value.Date
+            Dim vals = rc.GenerateCashBalance
+            Dim cashin = If(vals(0) = "", 0, vals(0))
+            Dim cashout = If(vals(1) = "", 0, vals(1))
+
             Dim rf As New Report_Form
-            Dim report As New CR_Expenses
-            report.SetDataSource(rc.GenerateExpenses)
-            report.SetParameterValue("Date_Range", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
+            Dim report As New CR_CashBalance
+            report.SetParameterValue("DateRange", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
+            report.SetParameterValue("Total_CashIN", cashin)
+            report.SetParameterValue("Total_CashOUT", cashout)
+            report.SetParameterValue("CashBalance", (Integer.Parse(cashin) - Integer.Parse(cashout)).ToString())
+
             rf.CrystalReportViewer1.ReportSource = report
             rf.ShowDialog()
         End If
