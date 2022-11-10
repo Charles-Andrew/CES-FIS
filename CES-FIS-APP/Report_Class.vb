@@ -52,7 +52,7 @@
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SET datestyle = dmy;SELECT SUM(amount) as total_cashout, (SELECT SUM(added_amount) as total_cashin FROM funds_transactions) FROM expenses WHERE date >= '" + From_Date + "' AND date <= '" + To_Date + "'"
+        cmd.CommandText = "SET datestyle = dmy;SELECT SUM(amount) as total_cashout, (SELECT SUM(added_amount) as total_cashin FROM funds_transactions WHERE transaction_date >= '" + From_Date + "' AND transaction_date <= '" + To_Date + "') FROM expenses WHERE date >= '" + From_Date + "' AND date <= '" + To_Date + "'"
         Dim dr = db.dr
         Dim vals As New List(Of String)
         dr = cmd.ExecuteReader
