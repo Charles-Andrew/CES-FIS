@@ -619,15 +619,15 @@ Public Class Main
             rc.From_Date = dtp_reports_from.Value.Date
             rc.To_Date = dtp_reports_to.Value.Date
             Dim vals = rc.GenerateCashBalance
-            Dim cashin = If(vals(0) = "", 0, vals(0))
-            Dim cashout = If(vals(1) = "", 0, vals(1))
+            Dim cashin = Double.Parse(If(vals(0) = "", 0, vals(0)))
+            Dim cashout = Double.Parse(If(vals(1) = "", 0, vals(1)))
 
             Dim rf As New Report_Form
             Dim report As New CR_CashBalance
             report.SetParameterValue("DateRange", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
-            report.SetParameterValue("Total_CashIN", cashin)
-            report.SetParameterValue("Total_CashOUT", cashout)
-            report.SetParameterValue("CashBalance", (Double.Parse(cashin) - Double.Parse(cashout)).ToString())
+            report.SetParameterValue("Total_CashIN", cashin.ToString("N2"))
+            report.SetParameterValue("Total_CashOUT", cashout.ToString("N2"))
+            report.SetParameterValue("CashBalance", (Double.Parse(cashin) - Double.Parse(cashout)).ToString("N2"))
 
             rf.CrystalReportViewer1.ReportSource = report
             rf.ShowDialog()
