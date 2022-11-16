@@ -17,10 +17,10 @@ Public Class Payment_Info_Class
         Dim cmd = db.cmd
         cmd.Connection = db.conn
         If selected_id <> 0 Then
-            cmd.CommandText = "SELECT COUNT(id) as ""Number of Payment"", SUM(amount) as ""Total Paid"",  (SELECT balance FROM balance WHERE student_id = @PID) as ""Total Payment"", ((SELECT balance FROM balance WHERE student_id = @PID) - SUM(amount)) as ""Difference"" FROM payments WHERE payor_id = @PID"
+            cmd.CommandText = "SELECT COUNT(id) as ""Number of Payment"", round(SUM(amount)::DECIMAL, 2)::TEXT as ""Total Paid"",  round((SELECT balance FROM balance WHERE student_id = @PID)::DECIMAL, 2)::TEXT as ""Total Payment"", round(((SELECT balance FROM balance WHERE student_id = @PID) - SUM(amount))::DECIMAL, 2)::TEXT as ""Difference"" FROM payments WHERE payor_id = @PID"
             cmd.Parameters.AddWithValue("@PID", selected_id)
         Else
-            cmd.CommandText = "SELECT COUNT(id) as ""Number of Payment"", SUM(amount) as ""Total Paid"" FROM payments"
+            cmd.CommandText = "SELECT COUNT(id) as ""Number of Payment"", round(SUM(amount)::DECIMAL, 2)::TEXT as ""Total Paid"" FROM payments"
         End If
         Dim da = db.da
         Dim dt = db.dt

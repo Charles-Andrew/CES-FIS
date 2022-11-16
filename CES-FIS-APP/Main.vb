@@ -158,7 +158,7 @@ Public Class Main
         ElseIf MTC_MAIN.SelectedTab.Text = "Students" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             LoadAllRecord()
-        ElseIf MTC_MAIN.SelectedTab.Text = "Enroll" Then
+        ElseIf MTC_MAIN.SelectedTab.Text = "Registration" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             cb_aye.Items.Clear()
             For yr = Int(Date.Now.Year) To 1980 Step -1
@@ -199,7 +199,7 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SELECT items.id as ""Item ID#"", items.name as ""Name of Item"", (SELECT sum(ft.added_amount) as ""Amount"" FROM items as i JOIN funds_transactions as ft ON ft.item_id = i.id WHERE i.id = items.id) FROM items"
+        cmd.CommandText = "SELECT items.id as ""Item ID#"", items.name as ""Name of Item"", round ((SELECT sum(ft.added_amount) as ""Amount"" FROM items as i JOIN funds_transactions as ft ON ft.item_id = i.id WHERE i.id = items.id)::DECIMAL, 2)::TEXT FROM items"
         Dim dt = db.dt
         Dim da = db.da
         dt.Clear()
@@ -219,7 +219,7 @@ Public Class Main
             chart_funds.Series("s1").IsValueShownAsLabel = True
             chart_funds.Series("s1").BorderColor = Color.Black
             While dr.Read
-                chart_funds.Series("s1").Points.AddXY(dr.Item("Name of Item"), dr.Item("Amount"))
+                chart_funds.Series("s1").Points.AddXY(dr.Item("Name of Item"), dr.Item("round"))
             End While
         End If
         db.Close()
@@ -370,14 +370,14 @@ Public Class Main
         Dim cmd = db.cmd
         cmd.Connection = db.conn
         If id <> 0 Then
-            cmd.CommandText = "SELECT id as ""Payment ID#"", amount as ""Amount Paid"", date as ""Payment Date"" FROM payments WHERE payor_id=@PID"
+            cmd.CommandText = "SELECT id as ""Payment ID#"", round(amount::DECIMAL, 2)::TEXT as ""Amount Paid"", date as ""Payment Date"" FROM payments WHERE payor_id=@PID"
             cmd.Parameters.AddWithValue("@PID", id)
             btn_set_balance.Visible = True
             card_remaining_balance.Visible = True
             card_balance_total.Visible = True
             btn_pay.Visible = True
         Else
-            cmd.CommandText = "SELECT id as ""Payment ID#"",(SELECT CONCAT(family_name,' ',given_name,' ',middle_name) as ""NAME"" FROM students WHERE id=payments.payor_id), amount as ""Amount Paid"", date as ""Payment Date"" FROM payments"
+            cmd.CommandText = "SELECT id as ""Payment ID#"",(SELECT CONCAT(family_name,' ',given_name,' ',middle_name) as ""NAME"" FROM students WHERE id=payments.payor_id), round(amount::DECIMAL, 2)::TEXT as ""Amount Paid"", date as ""Payment Date"" FROM payments"
             btn_set_balance.Visible = False
             card_remaining_balance.Visible = False
             card_balance_total.Visible = False
@@ -461,9 +461,9 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        Dim QS As String = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", amount as ""Amount"", date as ""Date"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "' ORDER BY id DESC"
+        Dim QS As String = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", round (amount::DECIMAL, 2)::TEXT as ""Amount"", date as ""Date"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "' ORDER BY id DESC"
         If all Then
-            QS = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", amount as ""Amount"", date as ""Date"" FROM expenses ORDER BY id DESC"
+            QS = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", round (amount::DECIMAL, 2)::TEXT as ""Amount"", date as ""Date"" FROM expenses ORDER BY id DESC"
         End If
         cmd.CommandText = QS
 
@@ -487,9 +487,9 @@ Public Class Main
         Dim cmd = db.cmd
         cmd.Connection = db.conn
         If all Then
-            cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount), 'FM9,999,999') as ""Total"", (SELECT to_char(SUM(added_amount), 'FM9,999,999') as ""FundsTotal"" FROM funds_transactions) FROM expenses"
+            cmd.CommandText = "SET datestyle = dmy;SELECT round (SUM(amount)::DECIMAL, 2)::TEXT as ""Total"", (SELECT round (SUM(added_amount)::DECIMAL, 2)::TEXT as ""FundsTotal"" FROM funds_transactions) FROM expenses"
         Else
-            cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount), 'FM9,999,999') as ""Total"", (SELECT to_char(SUM(added_amount), 'FM9,999,999') as ""FundsTotal"" FROM funds_transactions) FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
+            cmd.CommandText = "SET datestyle = dmy;SELECT round (SUM(amount)::DECIMAL, 2)::TEXT as ""Total"", (SELECT round (SUM(added_amount)::DECIMAL, 2)::TEXT as ""FundsTotal"" FROM funds_transactions) FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
         End If
 
         Dim dr = db.dr
@@ -514,7 +514,7 @@ Public Class Main
 
     End Sub
 
-    Private Sub btn_expenses_add_Click(sender As Object, e As EventArgs) Handles btn_expenses_add.Click
+    Private Sub xpenses_add_Click(sender As Object, e As EventArgs) Handles btn_expenses_add.Click
         If tb_expenses_amount.Text <> "" AndAlso tb_expenses_desc.Text <> "" Then
             Dim db As New DBConn
             db.Open()
@@ -625,7 +625,7 @@ Public Class Main
             report.SetParameterValue("DateRange", dtp_reports_from.Value.Date.ToShortDateString + " - " + dtp_reports_to.Value.Date.ToShortDateString)
             report.SetParameterValue("Total_CashIN", cashin)
             report.SetParameterValue("Total_CashOUT", cashout)
-            report.SetParameterValue("CashBalance", (Integer.Parse(cashin) - Integer.Parse(cashout)).ToString())
+            report.SetParameterValue("CashBalance", (Double.Parse(cashin) - Double.Parse(cashout)).ToString())
 
             rf.CrystalReportViewer1.ReportSource = report
             rf.ShowDialog()

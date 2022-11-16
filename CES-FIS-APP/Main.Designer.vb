@@ -24,9 +24,9 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
@@ -217,7 +217,7 @@ Partial Class Main
         Me.tp2.Padding = New System.Windows.Forms.Padding(3)
         Me.tp2.Size = New System.Drawing.Size(986, 490)
         Me.tp2.TabIndex = 2
-        Me.tp2.Text = "Enroll"
+        Me.tp2.Text = "Registration"
         Me.tp2.UseVisualStyleBackColor = True
         '
         'gb_enroll
@@ -346,7 +346,7 @@ Partial Class Main
         Me.btn_enroll.NoAccentTextColor = System.Drawing.Color.Empty
         Me.btn_enroll.Size = New System.Drawing.Size(76, 36)
         Me.btn_enroll.TabIndex = 38
-        Me.btn_enroll.Text = "Enroll"
+        Me.btn_enroll.Text = "Register"
         Me.btn_enroll.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
         Me.btn_enroll.UseAccentColor = False
         Me.btn_enroll.UseVisualStyleBackColor = True
@@ -1316,17 +1316,17 @@ Partial Class Main
         Me.chart_funds.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.chart_funds.BackSecondaryColor = System.Drawing.Color.Transparent
         Me.chart_funds.BorderlineColor = System.Drawing.Color.Transparent
-        ChartArea1.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend1)
+        ChartArea2.Name = "ChartArea1"
+        Me.chart_funds.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.chart_funds.Legends.Add(Legend2)
         Me.chart_funds.Location = New System.Drawing.Point(523, 19)
         Me.chart_funds.Name = "chart_funds"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series1.Legend = "Legend1"
-        Series1.Name = "s1"
-        Me.chart_funds.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series2.Legend = "Legend1"
+        Series2.Name = "s1"
+        Me.chart_funds.Series.Add(Series2)
         Me.chart_funds.Size = New System.Drawing.Size(385, 384)
         Me.chart_funds.TabIndex = 8
         Me.chart_funds.Text = "Funds"
