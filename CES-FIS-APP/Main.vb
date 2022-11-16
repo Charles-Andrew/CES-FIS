@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms.DataVisualization.Charting
+﻿Imports System.Globalization
+Imports System.Windows.Forms.DataVisualization.Charting
 Imports MaterialSkin
 
 Public Class Main
@@ -199,7 +200,7 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SELECT items.id as ""Item ID#"", items.name as ""Name of Item"", round ((SELECT sum(ft.added_amount) as ""Amount"" FROM items as i JOIN funds_transactions as ft ON ft.item_id = i.id WHERE i.id = items.id)::DECIMAL, 2)::TEXT FROM items"
+        cmd.CommandText = "SELECT items.id as ""Item ID#"", items.name as ""Name of Item"", to_char((SELECT sum(ft.added_amount) as ""Amount"" FROM items as i JOIN funds_transactions as ft ON ft.item_id = i.id WHERE i.id = items.id)::DECIMAL,'FM999,999.00')::TEXT as ""Amount"" FROM items"
         Dim dt = db.dt
         Dim da = db.da
         dt.Clear()
@@ -219,7 +220,7 @@ Public Class Main
             chart_funds.Series("s1").IsValueShownAsLabel = True
             chart_funds.Series("s1").BorderColor = Color.Black
             While dr.Read
-                chart_funds.Series("s1").Points.AddXY(dr.Item("Name of Item"), dr.Item("round"))
+                chart_funds.Series("s1").Points.AddXY(dr.Item("Name of Item"), dr.Item("Amount").ToString())
             End While
         End If
         db.Close()
@@ -265,21 +266,21 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        cmd.CommandText = "SELECT SUM(added_amount) as ""Total Amount"" FROM funds_transactions"
+        cmd.CommandText = "SELECT to_char(SUM(added_amount)::DECIMAL,'FM999,999.00')::TEXT as ""Total Amount"" FROM funds_transactions"
         Dim dr = db.dr
         dr = cmd.ExecuteReader
-        Dim amount As Double = 0
+        Dim amount As String = ""
         If dr.HasRows Then
             While dr.Read
                 Try
-                    amount = dr.Item("Total Amount")
+                    amount = dr.Item("Total Amount").ToString()
                 Catch ex As Exception
                     amount = 0
                 End Try
             End While
         End If
         db.Close()
-        Return amount.ToString
+        Return amount
     End Function
 
     Private Sub btn_remove_item_Click(sender As Object, e As EventArgs) Handles btn_remove_item.Click
@@ -370,14 +371,14 @@ Public Class Main
         Dim cmd = db.cmd
         cmd.Connection = db.conn
         If id <> 0 Then
-            cmd.CommandText = "SELECT id as ""Payment ID#"", round(amount::DECIMAL, 2)::TEXT as ""Amount Paid"", date as ""Payment Date"" FROM payments WHERE payor_id=@PID"
+            cmd.CommandText = "SELECT id as ""Payment ID#"", to_char(amount::DECIMAL,'FM999,999.00')::TEXT as ""Amount Paid"", date as ""Payment Date"" FROM payments WHERE payor_id=@PID"
             cmd.Parameters.AddWithValue("@PID", id)
             btn_set_balance.Visible = True
             card_remaining_balance.Visible = True
             card_balance_total.Visible = True
             btn_pay.Visible = True
         Else
-            cmd.CommandText = "SELECT id as ""Payment ID#"",(SELECT CONCAT(family_name,' ',given_name,' ',middle_name) as ""NAME"" FROM students WHERE id=payments.payor_id), round(amount::DECIMAL, 2)::TEXT as ""Amount Paid"", date as ""Payment Date"" FROM payments"
+            cmd.CommandText = "SELECT id as ""Payment ID#"",(SELECT CONCAT(family_name,' ',given_name,' ',middle_name) as ""NAME"" FROM students WHERE id=payments.payor_id), to_char(amount::DECIMAL,'FM999,999.00')::TEXT as ""Amount Paid"", date as ""Payment Date"" FROM payments"
             btn_set_balance.Visible = False
             card_remaining_balance.Visible = False
             card_balance_total.Visible = False
@@ -396,10 +397,11 @@ Public Class Main
         pic.selected_id = id
         If id <> 0 Then
             For Each item As DataRow In pic.LoadAllInfo().Rows
-                lbl_balance_total_value.Text = "₱" + If(item("Total Payment") IsNot DBNull.Value, item("Total Payment"), 0).ToString
+
+                lbl_balance_total_value.Text = "₱" + Double.Parse(If(item("Total Payment") IsNot DBNull.Value, item("Total Payment"), 0)).ToString("N2")
                 lbl_payments_made_value.Text = If(item("Number of Payment") IsNot DBNull.Value, item("Number of Payment"), 0).ToString
-                lbl_remaining_balance_value.Text = "₱" + If(item("Difference") IsNot DBNull.Value, item("Difference"), 0).ToString
-                lbl_total_paid_value.Text = "₱" + If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0).ToString
+                lbl_remaining_balance_value.Text = "₱" + Double.Parse(If(item("Difference") IsNot DBNull.Value, item("Difference"), 0)).ToString("N2")
+                lbl_total_paid_value.Text = "₱" + Double.Parse(If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0)).ToString("N2")
                 If dgv_payments.Rows.Count <> 0 Then
                     btn_delete_payment_record.Visible = True
                 Else
@@ -409,7 +411,7 @@ Public Class Main
         Else
             For Each item As DataRow In pic.LoadAllInfo().Rows
                 lbl_payments_made_value.Text = If(item("Number of Payment") IsNot DBNull.Value, item("Number of Payment"), 0).ToString
-                lbl_total_paid_value.Text = "₱" + If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0).ToString
+                lbl_total_paid_value.Text = "₱" + Double.Parse(If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0)).ToString("N2")
             Next
         End If
     End Sub
@@ -461,9 +463,9 @@ Public Class Main
         db.Open()
         Dim cmd = db.cmd
         cmd.Connection = db.conn
-        Dim QS As String = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", round (amount::DECIMAL, 2)::TEXT as ""Amount"", date as ""Date"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "' ORDER BY id DESC"
+        Dim QS As String = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", to_char(amount::DECIMAL,'FM999,999.00')::TEXT as ""Amount"", date as ""Date"" FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "' ORDER BY id DESC"
         If all Then
-            QS = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", round (amount::DECIMAL, 2)::TEXT as ""Amount"", date as ""Date"" FROM expenses ORDER BY id DESC"
+            QS = "SET datestyle = dmy;SELECT id as ""Record ID#"", description as ""Description"", to_char(amount::DECIMAL,'FM999,999.00')::TEXT as ""Amount"", date as ""Date"" FROM expenses ORDER BY id DESC"
         End If
         cmd.CommandText = QS
 
@@ -487,20 +489,20 @@ Public Class Main
         Dim cmd = db.cmd
         cmd.Connection = db.conn
         If all Then
-            cmd.CommandText = "SET datestyle = dmy;SELECT round (SUM(amount)::DECIMAL, 2)::TEXT as ""Total"", (SELECT round (SUM(added_amount)::DECIMAL, 2)::TEXT as ""FundsTotal"" FROM funds_transactions) FROM expenses"
+            cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount)::DECIMAL,'FM999,999.00')::TEXT as ""Total"", (SELECT to_char(SUM(added_amount)::DECIMAL,'FM999,999.00')::TEXT as ""FundsTotal"" FROM funds_transactions) FROM expenses"
         Else
-            cmd.CommandText = "SET datestyle = dmy;SELECT round (SUM(amount)::DECIMAL, 2)::TEXT as ""Total"", (SELECT round (SUM(added_amount)::DECIMAL, 2)::TEXT as ""FundsTotal"" FROM funds_transactions) FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
+            cmd.CommandText = "SET datestyle = dmy;SELECT to_char(SUM(amount)::DECIMAL,'FM999,999.00')::TEXT as ""Total"", (SELECT to_char(SUM(added_amount)::DECIMAL,'FM999,999.00')::TEXT as ""FundsTotal"" FROM funds_transactions) FROM expenses WHERE date >= '" + date_from + "' AND date <= '" + date_to + "'"
         End If
 
         Dim dr = db.dr
         dr = cmd.ExecuteReader
         If dr.HasRows Then
             While dr.Read
-                Dim bae As Double = If(dr.Item("FundsTotal") IsNot DBNull.Value, dr.Item("FundsTotal"), 0)
-                Dim exp_total As Double = If(dr.Item("Total") IsNot DBNull.Value, dr.Item("Total"), 0)
-
-                lbl_expense_total_value.Text = "₱" + exp_total.ToString
-                lbl_bae.Text = "₱" + (bae - exp_total).ToString
+                Dim bae As String = If(dr.Item("FundsTotal") IsNot DBNull.Value, dr.Item("FundsTotal"), 0).ToString()
+                Dim exp_total As String = If(dr.Item("Total") IsNot DBNull.Value, dr.Item("Total"), 0).ToString()
+                Dim diff As Double = Double.Parse(bae) - Double.Parse(exp_total)
+                lbl_expense_total_value.Text = "₱" + exp_total
+                lbl_bae.Text = "₱" + diff.ToString("N2")
             End While
         End If
         db.Close()

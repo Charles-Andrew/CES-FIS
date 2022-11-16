@@ -24,9 +24,9 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
@@ -344,7 +344,7 @@ Partial Class Main
         Me.btn_enroll.MouseState = MaterialSkin.MouseState.HOVER
         Me.btn_enroll.Name = "btn_enroll"
         Me.btn_enroll.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_enroll.Size = New System.Drawing.Size(76, 36)
+        Me.btn_enroll.Size = New System.Drawing.Size(89, 36)
         Me.btn_enroll.TabIndex = 38
         Me.btn_enroll.Text = "Register"
         Me.btn_enroll.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
@@ -909,10 +909,9 @@ Partial Class Main
         '
         'lbl_remaining_balance_value
         '
-        Me.lbl_remaining_balance_value.AutoSize = True
-        Me.lbl_remaining_balance_value.Location = New System.Drawing.Point(17, 76)
+        Me.lbl_remaining_balance_value.Location = New System.Drawing.Point(17, 43)
         Me.lbl_remaining_balance_value.Name = "lbl_remaining_balance_value"
-        Me.lbl_remaining_balance_value.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_remaining_balance_value.Size = New System.Drawing.Size(140, 92)
         Me.lbl_remaining_balance_value.TabIndex = 6
         Me.lbl_remaining_balance_value.Text = "Label2"
         '
@@ -945,10 +944,9 @@ Partial Class Main
         '
         'lbl_total_paid_value
         '
-        Me.lbl_total_paid_value.AutoSize = True
-        Me.lbl_total_paid_value.Location = New System.Drawing.Point(17, 76)
+        Me.lbl_total_paid_value.Location = New System.Drawing.Point(17, 42)
         Me.lbl_total_paid_value.Name = "lbl_total_paid_value"
-        Me.lbl_total_paid_value.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_total_paid_value.Size = New System.Drawing.Size(142, 93)
         Me.lbl_total_paid_value.TabIndex = 7
         Me.lbl_total_paid_value.Text = "Label3"
         '
@@ -981,10 +979,9 @@ Partial Class Main
         '
         'lbl_balance_total_value
         '
-        Me.lbl_balance_total_value.AutoSize = True
-        Me.lbl_balance_total_value.Location = New System.Drawing.Point(20, 76)
+        Me.lbl_balance_total_value.Location = New System.Drawing.Point(11, 43)
         Me.lbl_balance_total_value.Name = "lbl_balance_total_value"
-        Me.lbl_balance_total_value.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_balance_total_value.Size = New System.Drawing.Size(146, 92)
         Me.lbl_balance_total_value.TabIndex = 5
         Me.lbl_balance_total_value.Text = "Label1"
         '
@@ -1018,7 +1015,7 @@ Partial Class Main
         'lbl_payments_made_value
         '
         Me.lbl_payments_made_value.AutoSize = True
-        Me.lbl_payments_made_value.Location = New System.Drawing.Point(17, 76)
+        Me.lbl_payments_made_value.Location = New System.Drawing.Point(17, 42)
         Me.lbl_payments_made_value.Name = "lbl_payments_made_value"
         Me.lbl_payments_made_value.Size = New System.Drawing.Size(39, 13)
         Me.lbl_payments_made_value.TabIndex = 8
@@ -1316,17 +1313,17 @@ Partial Class Main
         Me.chart_funds.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.chart_funds.BackSecondaryColor = System.Drawing.Color.Transparent
         Me.chart_funds.BorderlineColor = System.Drawing.Color.Transparent
-        ChartArea2.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend2)
+        ChartArea4.Name = "ChartArea1"
+        Me.chart_funds.ChartAreas.Add(ChartArea4)
+        Legend4.Name = "Legend1"
+        Me.chart_funds.Legends.Add(Legend4)
         Me.chart_funds.Location = New System.Drawing.Point(523, 19)
         Me.chart_funds.Name = "chart_funds"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series2.Legend = "Legend1"
-        Series2.Name = "s1"
-        Me.chart_funds.Series.Add(Series2)
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series4.Legend = "Legend1"
+        Series4.Name = "s1"
+        Me.chart_funds.Series.Add(Series4)
         Me.chart_funds.Size = New System.Drawing.Size(385, 384)
         Me.chart_funds.TabIndex = 8
         Me.chart_funds.Text = "Funds"
