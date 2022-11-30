@@ -24,9 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
@@ -1079,6 +1080,14 @@ Partial Class Main
         Me.dgv_payments.AllowUserToResizeRows = False
         Me.dgv_payments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_payments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_payments.DefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_payments.Location = New System.Drawing.Point(6, 94)
         Me.dgv_payments.MultiSelect = False
         Me.dgv_payments.Name = "dgv_payments"
@@ -1313,17 +1322,17 @@ Partial Class Main
         Me.chart_funds.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.chart_funds.BackSecondaryColor = System.Drawing.Color.Transparent
         Me.chart_funds.BorderlineColor = System.Drawing.Color.Transparent
-        ChartArea4.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea4)
-        Legend4.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend4)
+        ChartArea1.Name = "ChartArea1"
+        Me.chart_funds.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.chart_funds.Legends.Add(Legend1)
         Me.chart_funds.Location = New System.Drawing.Point(523, 19)
         Me.chart_funds.Name = "chart_funds"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series4.Legend = "Legend1"
-        Series4.Name = "s1"
-        Me.chart_funds.Series.Add(Series4)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series1.Legend = "Legend1"
+        Series1.Name = "s1"
+        Me.chart_funds.Series.Add(Series1)
         Me.chart_funds.Size = New System.Drawing.Size(385, 384)
         Me.chart_funds.TabIndex = 8
         Me.chart_funds.Text = "Funds"

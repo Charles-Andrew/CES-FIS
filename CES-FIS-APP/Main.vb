@@ -19,6 +19,7 @@ Public Class Main
         End If
         Ageload()
         LoadAllRecord()
+
     End Sub
 
     Private Sub dtp_dob_ValueChanged(sender As Object, e As EventArgs) Handles dtp_dob.ValueChanged
@@ -145,6 +146,7 @@ Public Class Main
             LoadPaymentStudentList()
             PaymentDetailsDesign()
             LoadPaymentsTable(student_id_for_payment)
+
         ElseIf MTC_MAIN.SelectedTab.Text = "Expenses" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             ResetDate()
@@ -225,6 +227,8 @@ Public Class Main
         End If
         db.Close()
         TotalFundAmount()
+        dgv_funds.Columns("Amount").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
     End Sub
 
 
@@ -383,11 +387,10 @@ Public Class Main
             card_remaining_balance.Visible = False
             card_balance_total.Visible = False
             btn_pay.Visible = False
-
         End If
+
         Dim da = db.da
         Dim dt = db.dt
-        dt.Clear()
         da.SelectCommand = cmd
         da.Fill(dt)
         dgv_payments.DataSource = dt
@@ -414,6 +417,8 @@ Public Class Main
                 lbl_total_paid_value.Text = "₱" + Double.Parse(If(item("Total Paid") IsNot DBNull.Value, item("Total Paid"), 0)).ToString("N2")
             Next
         End If
+        dgv_payments.Columns("Amount Paid").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
     End Sub
 
     Private Sub btn_set_balance_Click(sender As Object, e As EventArgs) Handles btn_set_balance.Click
@@ -478,6 +483,8 @@ Public Class Main
         db.Close()
 
         LoadTotalExpense(all:=If(all, True, False))
+        dgv_expenses.Columns("Amount").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
     End Sub
 
     Private Sub LoadTotalExpense(Optional all As Boolean = False)
