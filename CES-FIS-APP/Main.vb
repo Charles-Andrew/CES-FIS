@@ -58,7 +58,7 @@ Public Class Main
                 cmd.Parameters.AddWithValue("@DOB", dtp_dob.Value.Date)
                 cmd.Parameters.AddWithValue("@age", Integer.Parse(tb_age.Text))
                 cmd.Parameters.AddWithValue("@cs", cb_civil_status.SelectedItem)
-                cmd.Parameters.AddWithValue("@AYE", cb_aye.SelectedValue.ToString)
+                cmd.Parameters.AddWithValue("@AYE", cb_aye.Text)
 
                 Try
                     If cmd.ExecuteNonQuery Then
