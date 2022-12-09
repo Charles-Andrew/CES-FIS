@@ -60,6 +60,9 @@
         cmd.Parameters.AddWithValue("@BAL", Double.Parse(tb_balance.Text))
         If cmd.ExecuteNonQuery Then
             MessageBox.Show("Balance successfully updated.", "Success")
+            Dim log As New Logs
+            log.TransactionDetails = "Balance Update:  Student with ID# of " + selected_id.ToString() + " balance has updated to " + tb_balance.Text
+            log.NewLog()
         Else
             MessageBox.Show("Something went wrong while updating the balance.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -82,6 +85,9 @@
         cmd.Parameters.AddWithValue("@PID", selected_id)
         cmd.Parameters.AddWithValue("@AMOUNT", Double.Parse(tb_balance.Text))
         cmd.Parameters.AddWithValue("@DATE", DateTime.Now.Date)
+        Dim log As New Logs
+        log.TransactionDetails = "New Student Payment Added:  Student with ID# of " + selected_id.ToString() + " paid " + tb_balance.Text
+        log.NewLog()
         If cmd.ExecuteNonQuery Then
             MessageBox.Show("New Payment Recorded.", "Success")
             Me.Dispose()

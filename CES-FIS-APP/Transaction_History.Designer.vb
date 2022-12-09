@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Transaction_History
     Inherits MaterialSkin.Controls.MaterialForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,12 @@ Partial Class Transaction_History
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgv_transaction_history = New System.Windows.Forms.DataGridView()
         Me.lbl_item_name = New MaterialSkin.Controls.MaterialLabel()
         Me.lbl_item = New MaterialSkin.Controls.MaterialLabel()
-        Me.btn_delete = New MaterialSkin.Controls.MaterialButton()
         CType(Me.dgv_transaction_history, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -37,14 +36,14 @@ Partial Class Transaction_History
         Me.dgv_transaction_history.AllowUserToResizeRows = False
         Me.dgv_transaction_history.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_transaction_history.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_transaction_history.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_transaction_history.DefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_transaction_history.Location = New System.Drawing.Point(6, 108)
         Me.dgv_transaction_history.MultiSelect = False
         Me.dgv_transaction_history.Name = "dgv_transaction_history"
@@ -77,31 +76,11 @@ Partial Class Transaction_History
         Me.lbl_item.TabIndex = 2
         Me.lbl_item.Text = "ItemName"
         '
-        'btn_delete
-        '
-        Me.btn_delete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_delete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.[Default]
-        Me.btn_delete.Depth = 0
-        Me.btn_delete.HighEmphasis = True
-        Me.btn_delete.Icon = Nothing
-        Me.btn_delete.Location = New System.Drawing.Point(543, 68)
-        Me.btn_delete.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.btn_delete.MouseState = MaterialSkin.MouseState.HOVER
-        Me.btn_delete.Name = "btn_delete"
-        Me.btn_delete.NoAccentTextColor = System.Drawing.Color.Empty
-        Me.btn_delete.Size = New System.Drawing.Size(73, 36)
-        Me.btn_delete.TabIndex = 3
-        Me.btn_delete.Text = "DELETE"
-        Me.btn_delete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained
-        Me.btn_delete.UseAccentColor = False
-        Me.btn_delete.UseVisualStyleBackColor = True
-        '
         'Transaction_History
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(622, 351)
-        Me.Controls.Add(Me.btn_delete)
         Me.Controls.Add(Me.lbl_item)
         Me.Controls.Add(Me.lbl_item_name)
         Me.Controls.Add(Me.dgv_transaction_history)
@@ -118,5 +97,4 @@ Partial Class Transaction_History
     Friend WithEvents dgv_transaction_history As DataGridView
     Friend WithEvents lbl_item_name As MaterialSkin.Controls.MaterialLabel
     Friend WithEvents lbl_item As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents btn_delete As MaterialSkin.Controls.MaterialButton
 End Class

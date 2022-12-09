@@ -146,15 +146,14 @@ Public Class Main
             LoadPaymentStudentList()
             PaymentDetailsDesign()
             LoadPaymentsTable(student_id_for_payment)
-
+        ElseIf MTC_MAIN.SelectedTab.Text = "Logs" Then
+            Dim logs As New Logs
+            dgv_logs.DataSource = logs.GetLogs()
         ElseIf MTC_MAIN.SelectedTab.Text = "Expenses" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             ResetDate()
             LoadExpensesTable(all:=True)
             LoadExpenseCardDesign()
-
-
-
         ElseIf MTC_MAIN.SelectedTab.Text = "Reports" Then
             Me.Text = "CES - Financial Inventory System - " + MTC_MAIN.SelectedTab.Text
             ReportsTabDesign()
@@ -535,6 +534,9 @@ Public Class Main
             cmd.Parameters.AddWithValue("@DATE", dtp_expenses_date.Value.Date)
             If cmd.ExecuteNonQuery Then
                 MessageBox.Show("New expense record was saved.", "Success")
+                Dim log As New Logs
+                log.TransactionDetails = "New Expeneses Added:  Expenses with description of '" + tb_expenses_desc.Text + "' and value of " + tb_expenses_amount.Text + " has been added."
+                log.NewLog()
                 tb_expenses_amount.Clear()
                 tb_expenses_desc.Clear()
                 dtp_expenses_date.Value = DateTime.Now.Date
@@ -565,6 +567,9 @@ Public Class Main
             cmd.Parameters.AddWithValue("@ID", dgv_expenses.CurrentRow.Cells(0).Value)
             If cmd.ExecuteNonQuery Then
                 MessageBox.Show("Selected record successfully deleted.")
+                Dim log As New Logs
+                log.TransactionDetails = "Expenses Deleted:  Expense with description of '" + dgv_expenses.CurrentRow.Cells(1).Value.ToString() + "' has been deleted."
+                log.NewLog()
                 Me.LoadExpensesTable()
             Else
                 MessageBox.Show("Something went wrong. Please try again.")

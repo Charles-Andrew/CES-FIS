@@ -32,6 +32,10 @@
 
             Dim dr = db.dr
             dr = cmd.ExecuteReader
+            Dim log As New Logs
+            log.TransactionDetails = "Added New Item: Item named " + tb_name.Text + " has been added."
+            log.NewLog()
+
             If dr.HasRows Then
                 While dr.Read()
                     Dim _db As New DBConn
@@ -75,6 +79,9 @@
         cmd.Parameters.AddWithValue("@ii", selected_id)
         cmd.Parameters.AddWithValue("@aa", Double.Parse(tb_item_amount.Text))
         cmd.Parameters.AddWithValue("@td", dtp_date.Value.Date)
+        Dim log As New Logs
+        log.TransactionDetails = "New Student Payment: Student with ID of " + selected_id + " paid " + tb_item_amount.Text
+        log.NewLog()
         If cmd.ExecuteNonQuery Then
             MessageBox.Show("New transaction recorded successfully.")
             Me.Close()

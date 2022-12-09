@@ -24,10 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim ChartArea9 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend9 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.IL_TABS = New System.Windows.Forms.ImageList(Me.components)
         Me.tp2 = New System.Windows.Forms.TabPage()
         Me.gb_enroll = New System.Windows.Forms.GroupBox()
@@ -143,6 +143,7 @@ Partial Class Main
         Me.lbl_reports_to = New MaterialSkin.Controls.MaterialLabel()
         Me.lbl_reports_for = New MaterialSkin.Controls.MaterialLabel()
         Me.btn_generate_report = New MaterialSkin.Controls.MaterialButton()
+        Me.tp9 = New System.Windows.Forms.TabPage()
         Me.tp7 = New System.Windows.Forms.TabPage()
         Me.gb_accounts = New System.Windows.Forms.GroupBox()
         Me.lbl_director_main = New System.Windows.Forms.Label()
@@ -165,6 +166,7 @@ Partial Class Main
         Me.MaterialLabel3 = New MaterialSkin.Controls.MaterialLabel()
         Me.MaterialLabel2 = New MaterialSkin.Controls.MaterialLabel()
         Me.tp8 = New System.Windows.Forms.TabPage()
+        Me.dgv_logs = New System.Windows.Forms.DataGridView()
         Me.tp2.SuspendLayout()
         Me.gb_enroll.SuspendLayout()
         Me.tp3.SuspendLayout()
@@ -190,10 +192,12 @@ Partial Class Main
         Me.tp6.SuspendLayout()
         Me.gb_reports.SuspendLayout()
         Me.card_report_generator.SuspendLayout()
+        Me.tp9.SuspendLayout()
         Me.tp7.SuspendLayout()
         Me.gb_accounts.SuspendLayout()
         Me.MaterialCard3.SuspendLayout()
         Me.card_accounts_admin.SuspendLayout()
+        CType(Me.dgv_logs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IL_TABS
@@ -208,6 +212,7 @@ Partial Class Main
         Me.IL_TABS.Images.SetKeyName(5, "expenses.png")
         Me.IL_TABS.Images.SetKeyName(6, "power-off.png")
         Me.IL_TABS.Images.SetKeyName(7, "account.png")
+        Me.IL_TABS.Images.SetKeyName(8, "log.png")
         '
         'tp2
         '
@@ -1080,14 +1085,14 @@ Partial Class Main
         Me.dgv_payments.AllowUserToResizeRows = False
         Me.dgv_payments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_payments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_payments.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_payments.DefaultCellStyle = DataGridViewCellStyle9
         Me.dgv_payments.Location = New System.Drawing.Point(6, 94)
         Me.dgv_payments.MultiSelect = False
         Me.dgv_payments.Name = "dgv_payments"
@@ -1276,6 +1281,7 @@ Partial Class Main
         Me.MTC_MAIN.Controls.Add(Me.tp4)
         Me.MTC_MAIN.Controls.Add(Me.tp5)
         Me.MTC_MAIN.Controls.Add(Me.tp6)
+        Me.MTC_MAIN.Controls.Add(Me.tp9)
         Me.MTC_MAIN.Controls.Add(Me.tp7)
         Me.MTC_MAIN.Controls.Add(Me.tp8)
         Me.MTC_MAIN.Depth = 0
@@ -1322,17 +1328,17 @@ Partial Class Main
         Me.chart_funds.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.chart_funds.BackSecondaryColor = System.Drawing.Color.Transparent
         Me.chart_funds.BorderlineColor = System.Drawing.Color.Transparent
-        ChartArea1.Name = "ChartArea1"
-        Me.chart_funds.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chart_funds.Legends.Add(Legend1)
+        ChartArea9.Name = "ChartArea1"
+        Me.chart_funds.ChartAreas.Add(ChartArea9)
+        Legend9.Name = "Legend1"
+        Me.chart_funds.Legends.Add(Legend9)
         Me.chart_funds.Location = New System.Drawing.Point(523, 19)
         Me.chart_funds.Name = "chart_funds"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series1.Legend = "Legend1"
-        Series1.Name = "s1"
-        Me.chart_funds.Series.Add(Series1)
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series9.Legend = "Legend1"
+        Series9.Name = "s1"
+        Me.chart_funds.Series.Add(Series9)
         Me.chart_funds.Size = New System.Drawing.Size(385, 384)
         Me.chart_funds.TabIndex = 8
         Me.chart_funds.Text = "Funds"
@@ -1925,6 +1931,17 @@ Partial Class Main
         Me.btn_generate_report.UseAccentColor = False
         Me.btn_generate_report.UseVisualStyleBackColor = True
         '
+        'tp9
+        '
+        Me.tp9.Controls.Add(Me.dgv_logs)
+        Me.tp9.ImageKey = "log.png"
+        Me.tp9.Location = New System.Drawing.Point(4, 39)
+        Me.tp9.Name = "tp9"
+        Me.tp9.Size = New System.Drawing.Size(986, 490)
+        Me.tp9.TabIndex = 8
+        Me.tp9.Text = "Logs"
+        Me.tp9.UseVisualStyleBackColor = True
+        '
         'tp7
         '
         Me.tp7.Controls.Add(Me.gb_accounts)
@@ -2315,6 +2332,21 @@ Partial Class Main
         Me.tp8.Text = "Logout"
         Me.tp8.UseVisualStyleBackColor = True
         '
+        'dgv_logs
+        '
+        Me.dgv_logs.AllowUserToAddRows = False
+        Me.dgv_logs.AllowUserToDeleteRows = False
+        Me.dgv_logs.AllowUserToResizeRows = False
+        Me.dgv_logs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgv_logs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgv_logs.BackgroundColor = System.Drawing.Color.White
+        Me.dgv_logs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv_logs.Location = New System.Drawing.Point(3, 26)
+        Me.dgv_logs.Name = "dgv_logs"
+        Me.dgv_logs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgv_logs.Size = New System.Drawing.Size(914, 461)
+        Me.dgv_logs.TabIndex = 0
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2366,6 +2398,7 @@ Partial Class Main
         Me.gb_reports.ResumeLayout(False)
         Me.card_report_generator.ResumeLayout(False)
         Me.card_report_generator.PerformLayout()
+        Me.tp9.ResumeLayout(False)
         Me.tp7.ResumeLayout(False)
         Me.gb_accounts.ResumeLayout(False)
         Me.gb_accounts.PerformLayout()
@@ -2373,6 +2406,7 @@ Partial Class Main
         Me.MaterialCard3.PerformLayout()
         Me.card_accounts_admin.ResumeLayout(False)
         Me.card_accounts_admin.PerformLayout()
+        CType(Me.dgv_logs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2513,4 +2547,6 @@ Partial Class Main
     Friend WithEvents cb_aye As MaterialSkin.Controls.MaterialComboBox
     Friend WithEvents lbl_availablefunds As MaterialSkin.Controls.MaterialLabel
     Friend WithEvents lbl_bae As Label
+    Friend WithEvents tp9 As TabPage
+    Friend WithEvents dgv_logs As DataGridView
 End Class
