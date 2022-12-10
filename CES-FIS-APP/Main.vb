@@ -232,10 +232,10 @@ Public Class Main
 
 
     Private Sub PaymentDetailsDesign()
-        lbl_balance_total_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
-        lbl_total_paid_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
-        lbl_remaining_balance_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
-        lbl_payments_made_value.Font = New Drawing.Font("Roboto", 20, FontStyle.Regular)
+        lbl_balance_total_value.Font = New Drawing.Font("Roboto", 15, FontStyle.Regular)
+        lbl_total_paid_value.Font = New Drawing.Font("Roboto", 15, FontStyle.Regular)
+        lbl_remaining_balance_value.Font = New Drawing.Font("Roboto", 15, FontStyle.Regular)
+        lbl_payments_made_value.Font = New Drawing.Font("Roboto", 15, FontStyle.Regular)
         lbl_balance_total_value.ForeColor = Color.Blue
         lbl_total_paid_value.ForeColor = Color.Green
         lbl_remaining_balance_value.ForeColor = Color.Red
